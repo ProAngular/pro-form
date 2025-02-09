@@ -1,7 +1,9 @@
+@use '../styles/variables' as var;
+
 :host,
 mat-toolbar {
   background-color: #1775d1;
-  height: 64px;
+  height: var.$header-height;
   left: 0;
   padding: 0;
   position: fixed;

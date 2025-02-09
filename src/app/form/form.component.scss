@@ -1,0 +1,68 @@
+@use '../styles/breakpoints' as breakpoints;
+
+$gap: 2rem;
+$margin: 0.5rem;
+
+:host {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+
+  pro-input,
+  pro-input-checkbox,
+  pro-input-datepicker,
+  pro-input-radio,
+  pro-input-timepicker,
+  pro-input-toggle {
+    flex: 0 0 calc(50% - ($gap/ 2));
+    margin: 0 $margin calc($margin * 2) $margin;
+    max-width: calc(50% - ($gap / 2));
+    width: 100%;
+  }
+
+  pro-input-textarea {
+    flex: 0 0 calc(100% - ($gap/ 2));
+    margin: 0 $margin calc($margin * 2) $margin;
+    max-width: calc(100% - ($gap / 2));
+  }
+}
+
+.actions > button {
+  margin-right: 0.5rem;
+}
+
+p {
+  padding: 0.5rem;
+}
+
+form {
+  margin-bottom: 1rem;
+}
+
+.disable-fields-checkbox {
+  display: block;
+  margin: 0.5rem 1rem 0 0;
+}
+
+@include breakpoints.media('max', 'md') {
+  :host form {
+    > pro-input,
+    > pro-input-checkbox,
+    > pro-input-datepicker,
+    > pro-input-radio,
+    > pro-input-timepicker,
+    > pro-input-textarea,
+    > pro-input-toggle {
+      flex: 0 0 100%;
+      margin: 0 0 calc($margin * 2) 0;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+mat-label {
+  display: block;
+}
+
+mat-error {
+  font-size: var(
+    --mat-form-field-subscript-text-size,
+    var(--mat-sys-body-small-size)
+  );
+  padding: 0 1rem;
+}
+
+mat-radio-button {
+  margin-right: 1rem;
+}

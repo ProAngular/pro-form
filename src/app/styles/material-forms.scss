@@ -1,0 +1,43 @@
+// Custom `pro-input` wrapper styles for Material forms.
+pro-input {
+  mat-form-field {
+    width: 100%;
+
+    .mdc-text-field {
+      background-color: white;
+    }
+  }
+}
+
+// Custom `pro-input-datepicker` wrapper styles for Material forms.
+pro-input-datepicker {
+  mat-form-field {
+    width: 100%;
+
+    .mdc-text-field {
+      background-color: white;
+    }
+  }
+}
+
+// Custom `pro-input-timepicker` wrapper styles for Material forms.
+pro-input-timepicker {
+  mat-form-field {
+    width: 100%;
+
+    .mdc-text-field {
+      background-color: white;
+    }
+  }
+}
+
+// Custom `pro-input-textarea` wrapper styles for Material forms.
+pro-input-textarea {
+  mat-form-field {
+    width: 100%;
+
+    .mdc-text-field {
+      background-color: white;
+    }
+  }
+}
