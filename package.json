@@ -13,6 +13,7 @@
     "build:prod": "ng build --configuration production",
     "lint": "ng lint",
     "ng": "ng",
+    "npm-build-package": "ng-packagr -p ng-package.json",
     "postinstall": "is-ci || husky install",
     "prettier": "prettier --write . --log-level silent",
     "prettier:check": "prettier --check .",
@@ -71,6 +72,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^19.1.2",
     "npm-check-updates": "^17.1.11",
     "prettier": "^3.4.1",
     "typescript": "~5.7.2"
