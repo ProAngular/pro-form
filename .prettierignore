@@ -1,0 +1,15 @@
+# Ignore everything
+/*
+
+# Make sure production files are ignored
+dist/
+public/
+
+# Do not ignore the following files
+!.github/
+!functions/
+!src/
+!README.md
+
+# Re-ignore sub-directories from the above exempt directories:
+.github/CODEOWNERS
