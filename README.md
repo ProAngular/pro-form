@@ -152,7 +152,7 @@ application where used:
 
 ## Compatibility <a name="usage"></a>
 
-| Angular version | @proangular/ngx-gist | Status     |
+| Angular version | @proangular/pro-form | Status     |
 | --------------- | -------------------- | ---------- |
 | v19             | v1.0.0               | Compatible |
 | v18             | ------               | Untested   |
