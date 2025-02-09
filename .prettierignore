@@ -7,7 +7,6 @@ public/
 
 # Do not ignore the following files
 !.github/
-!functions/
 !src/
 !README.md
 

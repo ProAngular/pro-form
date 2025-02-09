@@ -7,10 +7,25 @@
   </h1>
 </p>
 
+[![npm](https://badgen.net/badge/icon/npm?icon=npm&label)](https://www.npmjs.com/@proangular/pro-form)
+[![GitHub](https://badgen.net/badge/icon/GitHub?icon=github&label)](https://github.com/ProAngular/pro-form)
+[![TypeScript](https://badgen.net/badge/icon/TypeScript?icon=typescript&label)](https://github.com/ProAngular/pro-form/search?l=typescript)
+[![npm Version](https://badge.fury.io/js/@proangular%2Fngx-scroll-top.svg)](https://www.npmjs.com/@proangular/pro-form)
+[![Node Version](https://badgen.net/npm/node/@proangular/pro-form)](https://www.npmjs.com/@proangular/pro-form)
+[![Package Downloads](https://badgen.net/npm/dw/@proangular/pro-form)](https://www.npmjs.com/@proangular/pro-form)
+[![Size](https://img.shields.io/bundlephobia/minzip/@proangular/pro-form.svg)](https://bundlephobia.com/result?p=ProAngular/pro-form)
+[![Demo Status](https://badgen.net/badge/Demo/Online/green)](https://www.ProAngular.com/demos/pro-form)
+[![Website Status](https://img.shields.io/website?down_color=lightgrey&down_message=Offline&label=Website&up_color=green&up_message=Online&url=https%3A%2F%2Fwww.proangular.com)](https://www.proangular.com)
+[![Gitter Chat](https://badges.gitter.im/ProAngular/lobby.svg)](https://gitter.im/ProAngular/community)
+[![Discord Chat](https://img.shields.io/discord/1003103094588055552?label=Discord)](https://discord.com/channels/1003103094588055552)
+[![Sponsors](https://img.shields.io/github/sponsors/proangular?label=Sponsors)](https://github.com/sponsors/ProAngular)
+[![License](https://img.shields.io/npm/l/express.svg?maxAge=2592000)](/LICENSE)
+[![GitHub Package Status](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-gpr.yml/badge.svg)](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-gpr.yml)
+[![npmjs Package Status](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-npmjs.yml/badge.svg)](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-npmjs.yml)
+
 ## Index <a name="index"></a>
 
-<!-- - [Preview](#preview) -->
-
+- [Preview](#preview)
 - [Description](#description)
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
@@ -25,15 +40,13 @@
 <!---------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------->
 
-<!--
-
 ## Preview <a name="preview"></a>
 
-... to do
+Preview the live demo below to see the Pro Form Components in action:
+
+https://www.ProAngular.com/demos/pro-form
 
 <p align="right">[ <a href="#index">Index</a> ]</p>
-
--->
 
 <!---------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------->
@@ -90,6 +103,9 @@ following commands to install the required dependencies.
 
 **Angular Material**
 
+More information on theming Angular Material:
+https://material.angular.io/guide/theming
+
 ```bash
 ng add @angular/material
 ```
@@ -98,6 +114,12 @@ ng add @angular/material
 
 ```bash
 ng add @proangular/pro-form@latest
+```
+
+or
+
+```bash
+npm install @proangular/pro-form --save
 ```
 
 <p align="right">[ <a href="#index">Index</a> ]</p>
@@ -154,7 +176,7 @@ application where used:
 
 | Angular version | @proangular/pro-form | Status     |
 | --------------- | -------------------- | ---------- |
-| v19             | v1.0.0               | Compatible |
+| v19             | v19.0.0              | Compatible |
 | v18             | ------               | Untested   |
 | v17             | ------               | Untested   |
 
