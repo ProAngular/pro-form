@@ -1,6 +1,6 @@
 {
   "name": "@proangular/pro-form",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A predefined set of reactive and reusable form input components based on Angular Material.",
   "author": "Pro Angular <webmaster@proangular.com>",
   "homepage": "https://www.proangular.com",
@@ -107,6 +107,9 @@
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/proangular"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "main": "src/main.ts"
 }
