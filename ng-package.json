@@ -4,5 +4,5 @@
   "lib": {
     "entryFile": "src/app/public/public.ts"
   },
-  "allowedNonPeerDependencies": []
+  "allowedNonPeerDependencies": ["@angular/material"]
 }

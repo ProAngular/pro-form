@@ -2,6 +2,7 @@ import { DateTime } from 'luxon';
 import { isNonEmptyValue } from '../utilities';
 
 import { Pipe, PipeTransform } from '@angular/core';
+import { DateTimeFormat } from '../types';
 
 @Pipe({ name: 'dateTime', standalone: true })
 export class DateTimePipe implements PipeTransform {

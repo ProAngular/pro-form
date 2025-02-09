@@ -5,7 +5,7 @@ $margin: 0.5rem;
 
 :host {
   display: block;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 form {
@@ -48,6 +48,19 @@ form {
 .disable-fields-checkbox {
   display: block;
   margin: 0.5rem 1rem 0 0;
+}
+
+.form-values {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+
+  > textarea {
+    flex: 0 0 calc(100% - ($gap/ 2));
+    margin: 0 $margin calc($margin * 2) $margin;
+    max-width: calc(100% - ($gap / 2));
+  }
 }
 
 @include breakpoints.media('max', 'md') {

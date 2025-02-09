@@ -1,4 +1,4 @@
-interface RadioOption {
+export interface RadioOption {
   label: string;
   value: number | string;
 }

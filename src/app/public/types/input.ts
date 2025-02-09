@@ -1,7 +1,7 @@
-type InputAppearance =
+export type InputAppearance =
   import('@angular/material/form-field').MatFormFieldAppearance;
 
-type InputAutocomplete =
+export type InputAutocomplete =
   | 'additional-name'
   | 'address-level1'
   | 'address-level2'
@@ -59,7 +59,7 @@ type InputAutocomplete =
   | 'url'
   | 'username';
 
-type InputType =
+export type InputType =
   | 'color'
   | 'datetime-local'
   | 'date'

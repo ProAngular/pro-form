@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 
 import { InputDirective } from '../input.directive';
+import { InputAppearance } from '../types';
 
 @Component({
   selector: 'pro-input-timepicker',

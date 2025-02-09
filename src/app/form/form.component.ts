@@ -14,6 +14,7 @@ import { InputTextareaComponent } from '../public/input-textarea/input-textarea.
 import { InputTimepickerComponent } from '../public/input-timepicker/input-timepicker.component';
 import { InputToggleComponent } from '../public/input-toggle/input-toggle.component';
 import { InputComponent } from '../public/input/input.component';
+import { RadioOption } from '../public/types';
 import {
   FormGroupExample,
   formGroupExample,
@@ -71,6 +72,10 @@ export class FormComponent extends FormDirective<FormGroupExample> {
       toggleRequired: true,
     });
     this.formGroup.markAsDirty();
+  }
+
+  protected pretifyJson(value: unknown): string {
+    return JSON.stringify(value, undefined, 4);
   }
 
   protected submit(): void {

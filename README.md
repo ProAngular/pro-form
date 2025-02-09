@@ -65,7 +65,7 @@ The components included in this project are:
 - **InputCheckboxComponent**: A checkbox input field.
 - **InputDatepickerComponent**: A datepicker input field.
 - **InputDropdownComponent**: A dropdown input field.
-- **InputRadioComponent**: A radio input field.
+- **InputRadioModule**: A radio input options field.
 - **InputTextareaComponent**: A textarea input field.
 - **InputTimepickerComponent**: A timepicker input field.
 - **InputToggleComponent**: A toggle input field.
@@ -117,7 +117,7 @@ application where used:
 +   InputCheckboxComponent,
 +   InputDatepickerComponent,
 +   InputDropdownComponent,
-+   InputRadioComponent,
++   InputRadioModule,
 +   InputTextareaComponent,
 +   InputTimepickerComponent,
 +   InputToggleComponent,

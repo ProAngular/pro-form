@@ -118,4 +118,13 @@
   ></pro-input-checkbox>
 </div>
 
-<p>{{ formGroup.value | json }}</p>
+<hr />
+
+<div class="form-values">
+  <h4>Form Values</h4>
+  <textarea
+    rows="15"
+    class="form-value-display"
+    [innerHTML]="pretifyJson(formGroup.value)"
+  ></textarea>
+</div>

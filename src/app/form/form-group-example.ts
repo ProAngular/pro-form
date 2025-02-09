@@ -2,6 +2,7 @@ import { DateTime } from 'luxon';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { RadioOption } from '../public/types';
 import { CustomValidators } from '../public/utilities/custom-validators';
 
 export interface FormGroupExample {
