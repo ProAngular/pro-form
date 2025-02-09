@@ -1,0 +1,130 @@
+<form [formGroup]="formGroup">
+  <!-- NAME -->
+  <pro-input
+    [formControl]="formGroup.controls.name"
+    hint="This is a simple text input."
+    label="Name"
+    placeholder="Enter your name"
+  ></pro-input>
+  <!-- EMAIL -->
+  <pro-input
+    [formControl]="formGroup.controls.email"
+    hint="This is an email input."
+    label="Email"
+    placeholder="Enter your email"
+    type="email"
+  ></pro-input>
+  <!-- PASSWORD -->
+  <pro-input
+    [formControl]="formGroup.controls.password"
+    [hint]="
+      'A password with at least ' +
+      validation.password.minLength +
+      ' characters, but less than ' +
+      validation.password.maxLength +
+      '.'
+    "
+    label="Password"
+    placeholder="Enter a password"
+    type="password"
+  ></pro-input>
+  <!-- COUNT -->
+  <pro-input
+    [formControl]="formGroup.controls.count"
+    hint="An optional number 0-100, with a step of 5."
+    label="Count (optional)"
+    placeholder="Enter an optional number"
+    step="5"
+    type="number"
+  ></pro-input>
+  <!-- REQUIRED CHECKBOX -->
+  <pro-input-checkbox
+    [formControl]="formGroup.controls.checkboxRequired"
+    label="Required checkbox"
+  ></pro-input-checkbox>
+  <!-- REQUIRED TOGGLE -->
+  <pro-input-toggle
+    [formControl]="formGroup.controls.toggleRequired"
+    label="Required toggle"
+  ></pro-input-toggle>
+  <!-- OPTIONAL CHECKBOX -->
+  <pro-input-checkbox
+    [formControl]="formGroup.controls.checkboxOptional"
+    label="Optional checkbox"
+  ></pro-input-checkbox>
+  <!-- OPTIONAL TOGGLE -->
+  <pro-input-toggle
+    [formControl]="formGroup.controls.toggleOptional"
+    label="Optional toggle"
+  ></pro-input-toggle>
+  <!-- DATE PICKER -->
+  <pro-input-datepicker
+    [formControl]="formGroup.controls.date"
+    [min]="today"
+    [max]="thirtyDaysFromNow"
+    label="Date"
+    placeholder="Enter or select a date"
+    hint="From today to 30 days from now."
+  ></pro-input-datepicker>
+  <!-- TIME PICKER -->
+  <pro-input-timepicker
+    [formControl]="formGroup.controls.time"
+    interval="1hour"
+    label="Time"
+    placeholder="Enter or select a time"
+    hint="A time between 8 AM and 8 PM CST."
+  ></pro-input-timepicker>
+  <!-- OPTIONS RADIO -->
+  <pro-input-radio
+    [formControl]="formGroup.controls.optionsRadio"
+    label="Options"
+  >
+    @for (option of radioOptions; track option) {
+      <pro-input-radio-option [value]="option.value">{{
+        option.label
+      }}</pro-input-radio-option>
+    }
+  </pro-input-radio>
+  <!-- DESCRIPTION -->
+  <pro-input-textarea
+    [formControl]="formGroup.controls.description"
+    [hint]="
+      ((formGroup.controls.description.valueChanges | async)?.length || 0) +
+      '/' +
+      validation.description.maxLength +
+      ' characters.'
+    "
+    label="Description"
+    placeholder="Enter a description"
+  ></pro-input-textarea>
+</form>
+
+<div class="actions">
+  <button
+    (click)="reset()"
+    [disabled]="formGroup.pristine && formGroup.untouched"
+    label="Reset"
+    mat-stroked-button
+  >
+    Reset
+  </button>
+  <button (click)="prefillForm()" label="Fill" mat-flat-button>Fill</button>
+  <button (click)="submit()" label="Submit" mat-flat-button>Submit</button>
+  <pro-input-checkbox
+    (change)="toggleDisabled($event)"
+    [formControl]="toggleDisabledFormControl"
+    class="disable-fields-checkbox"
+    label="Disable Fields"
+  ></pro-input-checkbox>
+</div>
+
+<hr />
+
+<div class="form-values">
+  <h4>Form Values</h4>
+  <textarea
+    rows="15"
+    class="form-value-display"
+    [innerHTML]="pretifyJson(formGroup.value)"
+  ></textarea>
+</div>

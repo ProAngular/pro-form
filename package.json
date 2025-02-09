@@ -1,0 +1,112 @@
+{
+  "name": "pro-form",
+  "version": "1.0.0",
+  "description": "A predefined set of reactive and reusable form input components based on Angular Material.",
+  "author": "Pro Angular <webmaster@proangular.com>",
+  "homepage": "https://www.proangular.com",
+  "private": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "lint": "ng lint",
+    "ng": "ng",
+    "npm-build-package": "ng-packagr -p ng-package.json",
+    "postinstall": "is-ci || husky install",
+    "prettier": "prettier --write . --log-level silent",
+    "prettier:check": "prettier --check .",
+    "start": "ng serve",
+    "start:open": "ng serve --open",
+    "test": "ng test",
+    "update": "ncu -u",
+    "update:check": "ncu",
+    "watch": "ng build --watch --configuration development"
+  },
+  "peerDependencies": {
+    "@angular/animations": "^19.1.0",
+    "@angular/common": "^19.1.0",
+    "@angular/compiler": "^19.1.0",
+    "@angular/core": "^19.1.0",
+    "@angular/forms": "^19.1.0",
+    "@angular/material": "^19.1.0",
+    "@angular/material-luxon-adapter": "^19.1.3",
+    "@angular/platform-browser": "^19.1.0",
+    "@angular/platform-browser-dynamic": "^19.1.0",
+    "@angular/router": "^19.1.0",
+    "@ngneat/until-destroy": "^10.0.0",
+    "@types/luxon": "^3.4.2",
+    "luxon": "^3.5.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.1.6",
+    "@angular-eslint/builder": "18.4.3",
+    "@angular-eslint/eslint-plugin": "18.4.3",
+    "@angular-eslint/eslint-plugin-template": "18.4.3",
+    "@angular-eslint/schematics": "18.4.3",
+    "@angular-eslint/template-parser": "18.4.3",
+    "@angular/cli": "^19.1.6",
+    "@angular/compiler-cli": "^19.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
+    "@typescript-eslint/eslint-plugin": "8.17.0",
+    "@typescript-eslint/parser": "8.17.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsdoc": "^48.2.7",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-rxjs": "^5.0.3",
+    "eslint-plugin-rxjs-angular": "^2.0.1",
+    "eslint-plugin-unicorn": "^53.0.0",
+    "husky": "^9.1.7",
+    "is-ci": "^3.0.1",
+    "jasmine-core": "~5.5.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^19.1.2",
+    "npm-check-updates": "^17.1.11",
+    "prettier": "^3.4.1",
+    "typescript": "~5.7.2"
+  },
+  "contributors": [
+    {
+      "name": "Cody Tolene",
+      "email": "webmaster@codytolene.com",
+      "url": "https://www.codytolene.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProAngular/pro-form.git"
+  },
+  "keywords": [
+    "pro",
+    "angular",
+    "material",
+    "form",
+    "forms",
+    "input",
+    "inputs",
+    "custom",
+    "pro-form",
+    "ngx"
+  ],
+  "bugs": {
+    "url": "https://github.com/ProAngular/pro-form/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/proangular"
+  },
+  "main": "src/main.ts"
+}

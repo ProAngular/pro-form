@@ -1,0 +1,39 @@
+<mat-form-field [appearance]="appearance">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    *ngIf="formControl; else loadingTemplate"
+    [attr.step]="step"
+    [autocomplete]="autocomplete"
+    [formControl]="formControl"
+    [id]="id"
+    [name]="name || id"
+    [placeholder]="placeholder || ''"
+    [type]="type"
+    matInput
+  />
+  <ng-template #loadingTemplate>
+    Loading{{ label ? ' ' + label : '' }}...
+  </ng-template>
+  <mat-hint [title]="hint">{{ hint }}</mat-hint>
+  <mat-error *ngIf="formControl.invalid && formControl.touched">
+    @if (formControl.hasError('required')) {
+      {{ label }} is required.
+    } @else if (formControl.hasError('min')) {
+      {{ label }} must be at least {{ formControl.errors?.['min'].min }}.
+    } @else if (formControl.hasError('max')) {
+      {{ label }} cannot exceed {{ formControl.errors?.['max'].max }}.
+    } @else if (formControl.hasError('minlength')) {
+      {{ label }} must be at least
+      {{ formControl.errors?.['minlength'].requiredLength }} characters.
+    } @else if (formControl.hasError('maxlength')) {
+      {{ label }} cannot exceed
+      {{ formControl.errors?.['maxlength'].requiredLength }} characters.
+    } @else if (formControl.hasError('email')) {
+      {{ label }} must be a valid email address.
+    } @else if (formControl.hasError('nonNumber')) {
+      {{ label }} must be a number.
+    } @else if (formControl.hasError('wholeNumber')) {
+      {{ label }} must be a whole number.
+    }
+  </mat-error>
+</mat-form-field>

@@ -1,0 +1,19 @@
+@if (label) {
+  <mat-label>{{ label + (isRequired ? '*' : '') }}</mat-label>
+}
+<mat-radio-group
+  [ariaLabel]="label + ' radio group'"
+  [formControl]="formControl"
+>
+  @for (option of options; track option) {
+    <mat-radio-button [value]="option.value">{{
+      option.element.textContent
+    }}</mat-radio-button>
+  }
+</mat-radio-group>
+<mat-hint [title]="hint">{{ hint }}</mat-hint>
+<mat-error *ngIf="formControl.invalid && formControl.touched">
+  @if (formControl.hasError('required')) {
+    {{ label }} is required.
+  }
+</mat-error>

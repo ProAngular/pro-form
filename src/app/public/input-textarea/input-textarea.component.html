@@ -1,0 +1,27 @@
+<mat-form-field [appearance]="appearance">
+  <mat-label>{{ label }}</mat-label>
+  <textarea
+    *ngIf="formControl; else loadingTemplate"
+    [autocomplete]="autocomplete"
+    [formControl]="formControl"
+    [id]="id"
+    [name]="name || id"
+    [placeholder]="placeholder || ''"
+    matInput
+  ></textarea>
+  <ng-template #loadingTemplate>
+    Loading{{ label ? ' ' + label : '' }}...
+  </ng-template>
+  <mat-hint [title]="hint">{{ hint }}</mat-hint>
+  <mat-error *ngIf="formControl.invalid && formControl.touched">
+    @if (formControl.hasError('required')) {
+      {{ label }} is required.
+    } @else if (formControl.hasError('minlength')) {
+      {{ label }} must be at least
+      {{ formControl.errors?.['minlength'].requiredLength }} characters.
+    } @else if (formControl.hasError('maxlength')) {
+      {{ label }} cannot exceed
+      {{ formControl.errors?.['maxlength'].requiredLength }} characters.
+    }
+  </mat-error>
+</mat-form-field>
