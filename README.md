@@ -1,11 +1,15 @@
 <p align="center">
   <a href="https://www.ProAngular.com" target="_blank">
-    <img src="public/images/pro-angular-logo.png" />
+    <img src="https://raw.githubusercontent.com/ProAngular/pro-form/refs/heads/main/public/images/pro-angular-logo.png" />
   </a>
   <h1 align="center">
     <a href="https://www.ProAngular.com" target="_blank">Pro Angular</a>: Form Components
   </h1>
 </p>
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
 
 [![npm](https://badgen.net/badge/icon/npm?icon=npm&label)](https://www.npmjs.com/@proangular/pro-form)
 [![GitHub](https://badgen.net/badge/icon/GitHub?icon=github&label)](https://github.com/ProAngular/pro-form)
@@ -22,6 +26,10 @@
 [![License](https://img.shields.io/npm/l/express.svg?maxAge=2592000)](/LICENSE)
 [![GitHub Package Status](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-gpr.yml/badge.svg)](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-gpr.yml)
 [![npmjs Package Status](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-npmjs.yml/badge.svg)](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-npmjs.yml)
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
 
 ## Index <a name="index"></a>
 
@@ -156,7 +164,7 @@ application where used:
 
 ...
 
-// or component
+// Or import to component
 @Component({
   ...
   imports: [
@@ -164,7 +172,25 @@ application where used:
     ...
   ],
 })
+
+...
+
+// Then use in template
++ <form [formGroup]="formGroup">
++   <pro-input [formControl]="formGroup.controls.input" />
++   <pro-input-checkbox ... />
++   <pro-input-datepicker ... />
++   <pro-input-dropdown ... />
++   <pro-input-radio ... />
++   <pro-input-textarea ... />
++   <pro-input-timepicker ... />
++   <pro-input-toggle ... />
++   ...
++ </form>
 ```
+
+> ![Info][img-info] See an the example form code [here][url-example-form-code],
+> or a live demo [here][url-demo].
 
 <p align="right">[ <a href="#index">Index</a> ]</p>
 
@@ -172,13 +198,13 @@ application where used:
 <!---------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------->
 
-## Compatibility <a name="usage"></a>
+## Compatibility <a name="compatibility"></a>
 
-| Angular version | @proangular/pro-form | Status     |
-| --------------- | -------------------- | ---------- |
-| v19             | v19.0.0              | Compatible |
-| v18             | ------               | Untested   |
-| v17             | ------               | Untested   |
+| Angular version | @proangular/pro-form | Install                         |
+| --------------- | -------------------- | ------------------------------- |
+| v19             | v19.x.x              | ng add @proangular/pro-form@^19 |
+| v18             | ------               | Untested                        |
+| v17             | ------               | Untested                        |
 
 <p align="right">[ <a href="#index">Index</a> ]</p>
 
@@ -240,12 +266,12 @@ Thank you to the entire Angular team and community for such a great framework to
 build upon. If you have any questions, please let me know by opening an issue
 [here][url-new-issue].
 
-| Type                                                                      | Info                                                           |
-| :------------------------------------------------------------------------ | :------------------------------------------------------------- |
-| <img width="48" src=".github/images/ng-icons/email.svg" />                | webmaster@codytolene.com                                       |
-| <img width="48" src=".github/images/simple-icons/github.svg" />           | https://github.com/sponsors/CodyTolene                         |
-| <img width="48" src=".github/images/simple-icons/buymeacoffee.svg" />     | https://www.buymeacoffee.com/codytolene                        |
-| <img width="48" src=".github/images/simple-icons/bitcoin-btc-logo.svg" /> | bc1qfx3lvspkj0q077u3gnrnxqkqwyvcku2nml86wmudy7yf2u8edmqq0a5vnt |
+| Type                                                                                                                                            | Info                                                           |
+| :---------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- |
+| <img width="48" src="https://raw.githubusercontent.com/ProAngular/pro-form/refs/heads/main/.github/images/ng-icons/email.svg" />                | webmaster@codytolene.com                                       |
+| <img width="48" src="https://raw.githubusercontent.com/ProAngular/pro-form/refs/heads/main/.github/images/simple-icons/github.svg" />           | https://github.com/sponsors/CodyTolene                         |
+| <img width="48" src="https://raw.githubusercontent.com/ProAngular/pro-form/refs/heads/main/.github/images/simple-icons/buymeacoffee.svg" />     | https://www.buymeacoffee.com/codytolene                        |
+| <img width="48" src="https://raw.githubusercontent.com/ProAngular/pro-form/refs/heads/main/.github/images/simple-icons/bitcoin-btc-logo.svg" /> | bc1qfx3lvspkj0q077u3gnrnxqkqwyvcku2nml86wmudy7yf2u8edmqq0a5vnt |
 
 Fin. Happy programming friend!
 
@@ -253,5 +279,10 @@ Cody Tolene
 
 <!-- LINKS -->
 
+[img-info]:
+  https://raw.githubusercontent.com/ProAngular/pro-form/refs/heads/main/.github/images/ng-icons/info.svg
+[url-demo]: https://www.ProAngular.com/demos/pro-form
+[url-example-form-code]:
+  https://github.com/ProAngular/pro-form/blob/main/src/app/form/form.component.html
 [url-new-issue]: https://github.com/ProAngular/pro-form/issues
 [url-node-js]: https://nodejs.org/
