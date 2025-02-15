@@ -82,13 +82,14 @@ breakpoints.
 The components included in this project are:
 
 - **InputComponent**: A generic input field that can be used for text, email,
-  password, etc. **InputDropdownOptionComponent**: An option element for the
-  dropdown list input field.
+  password, etc.
 - **InputCheckboxComponent**: A checkbox input field.
-- **InputChipComponent**: A chip element for the chips list input field.
 - **InputChipsComponent**: A chips list input field.
+- **InputChipComponent**: A chip element for the chips list input field.
 - **InputDatepickerComponent**: A datepicker input field.
 - **InputDropdownComponent**: A dropdown list input field.
+- **InputDropdownOptionComponent**: An option element for the dropdown list
+  input field.
 - **InputDropdownOptionGroupComponent**: An option group element for the
   dropdown list input field.
 - **InputRadioComponent**: A radio input options field.
