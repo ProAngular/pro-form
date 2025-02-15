@@ -108,8 +108,12 @@ export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
     this.formGroup.reset();
   }
 
-  /** Scroll to the first invalid control in the form. */
-  public scrollToFirstInvalidControl(): void {
+  /** 
+   * Scroll to the first invalid control in the form.
+   * 
+   * @returns The label of the first invalid control.
+   */
+  public scrollToFirstInvalidControl(): string | null {
     if (this.formInputs.length === 0) {
       throw new Error('No form inputs provided to scroll to!');
     }
@@ -128,8 +132,10 @@ export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
           behavior: 'smooth',
           block: 'center',
         });
-        break;
+        return input.label;
       }
     }
+
+    return null;
   }
 }

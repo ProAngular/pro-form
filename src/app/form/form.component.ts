@@ -8,14 +8,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { FormDirective } from '../public/form.directive';
 import { InputCheckboxComponent } from '../public/input-checkbox/input-checkbox.component';
-import { InputChipsModule } from '../public/input-chips/input-chips.module';
 import { InputDatepickerComponent } from '../public/input-datepicker/input-datepicker.component';
-import { InputDropdownModule } from '../public/input-dropdown/input-dropdown.module';
-import { InputRadioModule } from '../public/input-radio/input-radio.module';
+import { InputDropdownOptionGroupComponent } from '../public/input-dropdown/input-dropdown-option-group.component';
+import { InputDropdownOptionComponent } from '../public/input-dropdown/input-dropdown-option.component';
+import { InputRadioComponent } from '../public/input-radio/input-radio.component';
 import { InputTextareaComponent } from '../public/input-textarea/input-textarea.component';
 import { InputTimepickerComponent } from '../public/input-timepicker/input-timepicker.component';
 import { InputToggleComponent } from '../public/input-toggle/input-toggle.component';
 import { InputComponent } from '../public/input/input.component';
+import {
+  InputChipComponent,
+  InputChipsComponent,
+  InputDropdownComponent,
+  InputRadioOptionComponent,
+} from '../public/public';
 import { Option } from '../public/types';
 import {
   FormGroupExample,
@@ -29,11 +35,15 @@ import {
   imports: [
     CommonModule,
     InputCheckboxComponent,
-    InputChipsModule,
+    InputChipComponent,
+    InputChipsComponent,
     InputComponent,
     InputDatepickerComponent,
-    InputDropdownModule,
-    InputRadioModule,
+    InputDropdownComponent,
+    InputDropdownOptionComponent,
+    InputDropdownOptionGroupComponent,
+    InputRadioComponent,
+    InputRadioOptionComponent,
     InputTextareaComponent,
     InputTimepickerComponent,
     InputToggleComponent,
@@ -95,14 +105,18 @@ export class FormComponent extends FormDirective<FormGroupExample> {
     if (this.formGroup.invalid) {
       this.highlightInvalidControls();
       this.scrollToFirstInvalidControl();
-      this.snackBar.open('Form invalid!', 'Dismiss', {
-        duration: 3000,
-      });
+      this.snackBar.open(
+        'Form invalid! Please fix the displayed errors and try again.',
+        'Dismiss',
+        {
+          duration: 3000,
+        },
+      );
 
       return;
     }
 
-    this.snackBar.open('Form submitted!', 'Dismiss', {
+    this.snackBar.open('Form valid! Submitted successfully.', 'Dismiss', {
       duration: 3000,
     });
     this.formGroup.reset();

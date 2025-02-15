@@ -4,8 +4,8 @@ import { InputDropdownOptionComponent } from './input-dropdown-option.component'
 @Component({
   selector: 'pro-input-dropdown-option-group',
   template: `<ng-content></ng-content>`,
-  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class InputDropdownOptionGroupComponent {
   @Input({ required: true }) public label!: string;

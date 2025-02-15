@@ -1,15 +1,25 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList, ViewChild } from '@angular/core';
 import { InputDirective } from '../input.directive';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { MatChipListbox } from '@angular/material/chips';
+import { MatChipListbox, MatChipsModule } from '@angular/material/chips';
 import { InputChipComponent } from './input-chip.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'pro-input-chips',
   templateUrl: './input-chips.component.html',
   styleUrl: './input-chips.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+  ],
+  standalone: true,
 })
 export class InputChipsComponent extends InputDirective<string> {
   @ContentChildren(InputChipComponent)

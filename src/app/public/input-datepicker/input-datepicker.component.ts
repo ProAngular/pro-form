@@ -16,7 +16,7 @@ import { LoadingInputComponent } from '../utilities/loading-input.component';
 @Component({
   selector: 'pro-input-datepicker',
   templateUrl: './input-datepicker.component.html',
-  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     DateTimePipe,
@@ -27,7 +27,7 @@ import { LoadingInputComponent } from '../utilities/loading-input.component';
     ReactiveFormsModule,
   ],
   providers: [provideLuxonDateAdapter()],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class InputDatepickerComponent extends InputDirective<DateTime> {
   @Input({ required: false }) public appearance: InputAppearance = 'outline';

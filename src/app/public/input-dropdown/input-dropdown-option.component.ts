@@ -7,8 +7,8 @@ import { MatOption } from '@angular/material/core';
 @Component({
   selector: 'pro-input-dropdown-option',
   template: `<ng-content></ng-content>`,
-  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class InputDropdownOptionComponent extends MatOption {
   public constructor(private readonly elementRef: ElementRef<HTMLElement>) {

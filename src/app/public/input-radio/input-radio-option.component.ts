@@ -9,8 +9,8 @@ import {
 @Component({
   selector: 'pro-input-radio-option',
   template: `<ng-content></ng-content>`,
-  standalone: false,
   changeDetection: ChangeDetectionStrategy.Default,
+  standalone: true,
 })
 export class InputRadioOptionComponent<T> {
   public constructor(private readonly elementRef: ElementRef<HTMLElement>) {}

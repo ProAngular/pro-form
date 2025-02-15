@@ -82,16 +82,20 @@ breakpoints.
 The components included in this project are:
 
 - **InputComponent**: A generic input field that can be used for text, email,
-  password, etc.
+  password, etc. **InputDropdownOptionComponent**: An option element for the
+  dropdown list input field.
 - **InputCheckboxComponent**: A checkbox input field.
-- **InputChipsComponent**: A chips input field.
+- **InputChipComponent**: A chip element for the chips list input field.
+- **InputChipsComponent**: A chips list input field.
 - **InputDatepickerComponent**: A datepicker input field.
-- **InputDropdownComponent**: A dropdown input field.
-- **InputRadioModule**: A radio input options field.
+- **InputDropdownComponent**: A dropdown list input field.
+- **InputDropdownOptionGroupComponent**: An option group element for the
+  dropdown list input field.
+- **InputRadioComponent**: A radio input options field.
+- **InputRadioOptionComponent**: An option element for the radio input field.
 - **InputTextareaComponent**: A textarea input field.
 - **InputTimepickerComponent**: A timepicker input field.
 - **InputToggleComponent**: A toggle input field.
-- More to come...
 
 Each component is designed to be easily customized and extended to meet your
 specific needs. They are built using Angular Material and Angular CDK, ensuring
@@ -146,10 +150,14 @@ application where used:
 + import {
 +   InputComponent,
 +   InputCheckboxComponent,
++   InputChipComponent,
 +   InputChipsComponent,
 +   InputDatepickerComponent,
 +   InputDropdownComponent,
-+   InputRadioModule,
++   InputDropdownOptionComponent,
++   InputDropdownOptionGroupComponent,
++   InputRadioComponent,
++   InputRadioOptionComponent,
 +   InputTextareaComponent,
 +   InputTimepickerComponent,
 +   InputToggleComponent,
@@ -161,10 +169,14 @@ application where used:
   imports: [
 +   InputComponent,
 +   InputCheckboxComponent,
++   InputChipComponent,
 +   InputChipsComponent,
 +   InputDatepickerComponent,
 +   InputDropdownComponent,
-+   InputRadioModule,
++   InputDropdownOptionComponent,
++   InputDropdownOptionGroupComponent,
++   InputRadioComponent,
++   InputRadioOptionComponent,
 +   InputTextareaComponent,
 +   InputTimepickerComponent,
 +   InputToggleComponent,
@@ -180,10 +192,14 @@ application where used:
   imports: [
 +   InputComponent,
 +   InputCheckboxComponent,
++   InputChipComponent,
 +   InputChipsComponent,
 +   InputDatepickerComponent,
 +   InputDropdownComponent,
-+   InputRadioModule,
++   InputDropdownOptionComponent,
++   InputDropdownOptionGroupComponent,
++   InputRadioComponent,
++   InputRadioOptionComponent,
 +   InputTextareaComponent,
 +   InputTimepickerComponent,
 +   InputToggleComponent,

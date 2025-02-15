@@ -4,15 +4,27 @@ import { InputDirective } from '../input.directive';
 import { InputAppearance } from '../types';
 import { InputDropdownOptionComponent } from './input-dropdown-option.component';
 import { InputDropdownOptionGroupComponent } from './input-dropdown-option-group.component';
-import { MatOption, MatSelect } from '@angular/material/select';
+import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoadingInputComponent } from '../utilities/loading-input.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'pro-input-dropdown',
   templateUrl: './input-dropdown.component.html',
   styleUrl: './input-dropdown.component.scss',
-  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    FormsModule,
+    LoadingInputComponent,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+  ],
+  standalone: true,
 })
 export class InputDropdownComponent<T> extends InputDirective<T> {
   @ContentChildren(InputDropdownOptionComponent) 

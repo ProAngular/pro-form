@@ -5,7 +5,7 @@ import { MatChip } from '@angular/material/chips';
 @Component({
   selector: 'pro-input-chip',
   template: `<ng-content></ng-content>`,
-  standalone: false,
+  standalone: true,
 })
 export class InputChipComponent extends MatChip {
   public constructor(private readonly elementRef: ElementRef<HTMLElement>) {
