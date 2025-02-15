@@ -6,14 +6,15 @@ import { MatInputModule } from '@angular/material/input';
 
 import { InputDirective } from '../input.directive';
 import { InputAppearance, InputAutocomplete, InputType } from '../types';
+import { LoadingInputComponent } from '../utilities/loading-input.component';
 
 @Component({
   selector: 'pro-input',
   templateUrl: './input.component.html',
-  styleUrls: [],
   standalone: true,
   imports: [
     CommonModule,
+    LoadingInputComponent,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,

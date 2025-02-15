@@ -16,10 +16,13 @@ form {
 
   pro-input,
   pro-input-checkbox,
+  pro-input-chips,
   pro-input-datepicker,
+  pro-input-dropdown,
   pro-input-radio,
   pro-input-timepicker,
-  pro-input-toggle {
+  pro-input-toggle,
+  pro-loading-input {
     flex: 0 0 calc(50% - ($gap/ 2));
     margin: 0 $margin calc($margin * 2) $margin;
     max-width: calc(50% - ($gap / 2));
@@ -67,11 +70,14 @@ form {
   :host form {
     > pro-input,
     > pro-input-checkbox,
+    > pro-input-chips,
     > pro-input-datepicker,
+    > pro-input-dropdown,
     > pro-input-radio,
-    > pro-input-timepicker,
     > pro-input-textarea,
-    > pro-input-toggle {
+    > pro-input-timepicker,
+    > pro-input-toggle,
+    > pro-loading-input {
       flex: 0 0 100%;
       margin: 0 0 calc($margin * 2) 0;
       max-width: 100%;

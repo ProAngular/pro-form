@@ -1,9 +1,13 @@
 // Components
-export { InputComponent } from './input/input.component';
 export { InputCheckboxComponent } from './input-checkbox/input-checkbox.component';
+export { InputChipComponent } from './input-chips/input-chip.component';
+export { InputChipsComponent } from './input-chips/input-chips.component';
+export { InputComponent } from './input/input.component';
 export { InputDatepickerComponent } from './input-datepicker/input-datepicker.component';
+export { InputDropdownComponent } from './input-dropdown/input-dropdown.component';
+export { InputDropdownOptionComponent } from './input-dropdown/input-dropdown-option.component';
+export { InputDropdownOptionGroupComponent } from './input-dropdown/input-dropdown-option-group.component';
 export { InputRadioComponent } from './input-radio/input-radio.component';
-export { InputRadioModule } from './input-radio/input-radio.module';
 export { InputRadioOptionComponent } from './input-radio/input-radio-option.component';
 export { InputTextareaComponent } from './input-textarea/input-textarea.component';
 export { InputTimepickerComponent } from './input-timepicker/input-timepicker.component';
@@ -25,5 +29,5 @@ export type {
   InputAppearance,
   InputAutocomplete, 
   InputType,
-  RadioOption,
+  Option,
 } from './types';

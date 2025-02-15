@@ -9,12 +9,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormDirective } from '../public/form.directive';
 import { InputCheckboxComponent } from '../public/input-checkbox/input-checkbox.component';
 import { InputDatepickerComponent } from '../public/input-datepicker/input-datepicker.component';
-import { InputRadioModule } from '../public/input-radio/input-radio.module';
+import { InputDropdownOptionGroupComponent } from '../public/input-dropdown/input-dropdown-option-group.component';
+import { InputDropdownOptionComponent } from '../public/input-dropdown/input-dropdown-option.component';
+import { InputRadioComponent } from '../public/input-radio/input-radio.component';
 import { InputTextareaComponent } from '../public/input-textarea/input-textarea.component';
 import { InputTimepickerComponent } from '../public/input-timepicker/input-timepicker.component';
 import { InputToggleComponent } from '../public/input-toggle/input-toggle.component';
 import { InputComponent } from '../public/input/input.component';
-import { RadioOption } from '../public/types';
+import {
+  InputChipComponent,
+  InputChipsComponent,
+  InputDropdownComponent,
+  InputRadioOptionComponent,
+} from '../public/public';
+import { Option } from '../public/types';
 import {
   FormGroupExample,
   formGroupExample,
@@ -27,9 +35,15 @@ import {
   imports: [
     CommonModule,
     InputCheckboxComponent,
+    InputChipComponent,
+    InputChipsComponent,
     InputComponent,
     InputDatepickerComponent,
-    InputRadioModule,
+    InputDropdownComponent,
+    InputDropdownOptionComponent,
+    InputDropdownOptionGroupComponent,
+    InputRadioComponent,
+    InputRadioOptionComponent,
     InputTextareaComponent,
     InputTimepickerComponent,
     InputToggleComponent,
@@ -50,6 +64,9 @@ export class FormComponent extends FormDirective<FormGroupExample> {
   }
 
   protected override readonly formGroup = formGroupExample;
+  protected readonly chips = chips;
+  protected readonly dropdownOptions = dropdownOptions;
+  protected readonly groupedDropdownOptions = groupedDropdownOptions;
   protected readonly radioOptions = radioOptions;
   protected readonly thirtyDaysFromNow: DateTime;
   protected readonly today: DateTime;
@@ -60,9 +77,15 @@ export class FormComponent extends FormDirective<FormGroupExample> {
     this.formGroup.setValue({
       checkboxOptional: false,
       checkboxRequired: true,
+      chips: [this.chips[0], this.chips[1]],
       count: 45,
       date: this.today.plus({ weeks: 1 }),
       description: 'Lorem ipsum dolor sit amet.',
+      dropdown: this.dropdownOptions[0].value,
+      dropdownMultiple: [
+        this.dropdownOptions[0].value,
+        this.dropdownOptions[1].value,
+      ],
       email: 'test@test.com',
       name: 'John Doe',
       optionsRadio: this.radioOptions[0].value,
@@ -82,14 +105,18 @@ export class FormComponent extends FormDirective<FormGroupExample> {
     if (this.formGroup.invalid) {
       this.highlightInvalidControls();
       this.scrollToFirstInvalidControl();
-      this.snackBar.open('Form invalid!', 'Dismiss', {
-        duration: 3000,
-      });
+      this.snackBar.open(
+        'Form invalid! Please fix the displayed errors and try again.',
+        'Dismiss',
+        {
+          duration: 3000,
+        },
+      );
 
       return;
     }
 
-    this.snackBar.open('Form submitted!', 'Dismiss', {
+    this.snackBar.open('Form valid! Submitted successfully.', 'Dismiss', {
       duration: 3000,
     });
     this.formGroup.reset();
@@ -105,7 +132,30 @@ export class FormComponent extends FormDirective<FormGroupExample> {
   }
 }
 
-const radioOptions: RadioOption[] = [
+const chips: readonly string[] = [
+  'Chip 1',
+  'Chip 2',
+  'Chip 3',
+  'Chip 4',
+  'Chip 5',
+  'Chip 6',
+  'Chip 7',
+  'Chip 8',
+];
+
+const dropdownOptions: readonly Option[] = [
+  { label: 'Option 1', value: 'One' },
+  { label: 'Option 2', value: '2' },
+  { label: 'Option 3', value: 3 },
+];
+
+const groupedDropdownOptions: readonly Option[] = [
+  { label: 'Option 4', value: 'Four' },
+  { label: 'Option 5', value: '5' },
+  { label: 'Option 6', value: 6 },
+];
+
+const radioOptions: readonly Option[] = [
   { label: 'Option 1', value: 1 },
   { label: 'Option 2', value: '2' },
   { label: 'Option 3', value: 3 },

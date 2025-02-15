@@ -1,0 +1,24 @@
+<mat-label>{{ label }}</mat-label>
+<mat-chip-listbox
+  [compareWith]="compareWith"
+  [formControl]="formControl"
+  [multiple]="multiple"
+>
+  @for (chip of chips; track chip) {
+    <mat-chip-option
+      [disabled]="chip.disabled"
+      [value]="chip.value"
+    >{{
+      chip.element.textContent
+    }}</mat-chip-option>
+  }
+</mat-chip-listbox>
+<mat-error *ngIf="formControl.invalid && formControl.touched">
+  @if (formControl.hasError('required')) {
+    {{ label }} is required.
+  } @else if (formControl.hasError('maxlength')) {
+    {{ label }} cannot exceed {{ formControl.errors?.['maxlength'].requiredLength }} selections.
+  } @else if (formControl.hasError('minlength')) {
+    {{ label }} must have at least {{ formControl.errors?.['minlength'].requiredLength }} selections.
+  }
+</mat-error>

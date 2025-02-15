@@ -2,18 +2,21 @@ import { DateTime } from 'luxon';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { RadioOption } from '../public/types';
+import { Option } from '../public/types';
 import { CustomValidators } from '../public/utilities/custom-validators';
 
 export interface FormGroupExample {
   checkboxOptional: FormControl<boolean | null>;
   checkboxRequired: FormControl<boolean | null>;
+  chips: FormControl<readonly string[] | null>;
   count: FormControl<number | null>;
   date: FormControl<DateTime | null>;
   description: FormControl<string | null>;
+  dropdown: FormControl<Option['value'] | null>;
+  dropdownMultiple: FormControl<ReadonlyArray<Option['value']> | null>;
   email: FormControl<string | null>;
   name: FormControl<string | null>;
-  optionsRadio: FormControl<RadioOption['value'] | null>;
+  optionsRadio: FormControl<Option['value'] | null>;
   password: FormControl<string | null>;
   time: FormControl<DateTime | null>;
   toggleOptional: FormControl<boolean | null>;
@@ -42,6 +45,10 @@ export const formGroupExample = new FormGroup<FormGroupExample>({
   checkboxRequired: new FormControl<boolean | null>(null, [
     Validators.required,
   ]),
+  chips: new FormControl<readonly string[] | null>(null, [
+    Validators.required,
+    Validators.maxLength(3),
+  ]),
   count: new FormControl<number | null>(null, [
     Validators.min(validation.count.min),
     Validators.max(validation.count.max),
@@ -55,12 +62,19 @@ export const formGroupExample = new FormGroup<FormGroupExample>({
     Validators.required,
     Validators.maxLength(validation.description.maxLength),
   ]),
+  dropdown: new FormControl<Option['value'] | null>(null, [
+    Validators.required,
+  ]),
+  dropdownMultiple: new FormControl<ReadonlyArray<Option['value']> | null>(
+    null,
+    [Validators.required, Validators.maxLength(2)],
+  ),
   email: new FormControl<string | null>(null, [
     Validators.email,
     Validators.required,
   ]),
   name: new FormControl<string | null>(null, [Validators.required]),
-  optionsRadio: new FormControl<RadioOption['value'] | null>(null, [
+  optionsRadio: new FormControl<Option['value'] | null>(null, [
     Validators.required,
   ]),
   password: new FormControl<string | null>(null, [

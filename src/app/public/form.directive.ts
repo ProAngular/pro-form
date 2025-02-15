@@ -13,6 +13,8 @@ import { InputTextareaComponent } from './input-textarea/input-textarea.componen
 import { InputTimepickerComponent } from './input-timepicker/input-timepicker.component';
 import { InputToggleComponent } from './input-toggle/input-toggle.component';
 import { InputComponent } from './input/input.component';
+import { InputDropdownComponent } from './input-dropdown/input-dropdown.component';
+import { InputChipsComponent } from './input-chips/input-chips.component';
 
 @Directive({ selector: '[proFormDirective][formGroup]' })
 export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
@@ -25,9 +27,15 @@ export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
 
   @ViewChildren(InputCheckboxComponent)
   private readonly inputCheckboxes!: QueryList<InputCheckboxComponent>;
+  
+  @ViewChildren(InputChipsComponent)
+  private readonly inputChips!: QueryList<InputChipsComponent>;
 
   @ViewChildren(InputDatepickerComponent)
   private readonly inputDatepickers!: QueryList<InputDatepickerComponent>;
+
+  @ViewChildren(InputDropdownComponent)
+  private readonly inputDropdowns!: QueryList<InputDropdownComponent<T>>;
 
   @ViewChildren(InputRadioComponent)
   private readonly inputRadios!: QueryList<InputRadioComponent<T>>;
@@ -44,7 +52,9 @@ export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
   private get formInputs(): ReadonlyArray<
     | InputComponent
     | InputCheckboxComponent
+    | InputChipsComponent
     | InputDatepickerComponent
+    | InputDropdownComponent<T>
     | InputRadioComponent<T>
     | InputTextareaComponent
     | InputTimepickerComponent
@@ -53,7 +63,9 @@ export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
     return [
       ...this.inputs.toArray(),
       ...this.inputCheckboxes.toArray(),
+      ...this.inputChips.toArray(),
       ...this.inputDatepickers.toArray(),
+      ...this.inputDropdowns.toArray(),
       ...this.inputRadios.toArray(),
       ...this.inputTextareas.toArray(),
       ...this.inputTimepickers.toArray(),
@@ -96,8 +108,12 @@ export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
     this.formGroup.reset();
   }
 
-  /** Scroll to the first invalid control in the form. */
-  public scrollToFirstInvalidControl(): void {
+  /** 
+   * Scroll to the first invalid control in the form.
+   * 
+   * @returns The label of the first invalid control.
+   */
+  public scrollToFirstInvalidControl(): string | null {
     if (this.formInputs.length === 0) {
       throw new Error('No form inputs provided to scroll to!');
     }
@@ -116,8 +132,10 @@ export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
           behavior: 'smooth',
           block: 'center',
         });
-        break;
+        return input.label;
       }
     }
+
+    return null;
   }
 }
