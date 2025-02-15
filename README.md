@@ -84,6 +84,7 @@ The components included in this project are:
 - **InputComponent**: A generic input field that can be used for text, email,
   password, etc.
 - **InputCheckboxComponent**: A checkbox input field.
+- **InputChipsComponent**: A chips input field.
 - **InputDatepickerComponent**: A datepicker input field.
 - **InputDropdownComponent**: A dropdown input field.
 - **InputRadioModule**: A radio input options field.
@@ -145,6 +146,7 @@ application where used:
 + import {
 +   InputComponent,
 +   InputCheckboxComponent,
++   InputChipsComponent,
 +   InputDatepickerComponent,
 +   InputDropdownComponent,
 +   InputRadioModule,
@@ -158,34 +160,50 @@ application where used:
   ...
   imports: [
 +   InputComponent,
++   InputCheckboxComponent,
++   InputChipsComponent,
++   InputDatepickerComponent,
++   InputDropdownComponent,
++   InputRadioModule,
++   InputTextareaComponent,
++   InputTimepickerComponent,
++   InputToggleComponent,
     ...
   ],
 })
 
 ...
 
-// Or import to component
+// Or import to a standalone component
 @Component({
   ...
   imports: [
 +   InputComponent,
++   InputCheckboxComponent,
++   InputChipsComponent,
++   InputDatepickerComponent,
++   InputDropdownComponent,
++   InputRadioModule,
++   InputTextareaComponent,
++   InputTimepickerComponent,
++   InputToggleComponent,
     ...
   ],
 })
 
 ...
 
-// Then use in template
+// Then use in template, simplified example form below:
 + <form [formGroup]="formGroup">
-+   <pro-input [formControl]="formGroup.controls.input" />
-+   <pro-input-checkbox ... />
-+   <pro-input-datepicker ... />
-+   <pro-input-dropdown ... />
-+   <pro-input-radio ... />
-+   <pro-input-textarea ... />
-+   <pro-input-timepicker ... />
-+   <pro-input-toggle ... />
-+   ...
++   <pro-input [formControl]="formGroup.controls.input" ... />
++   <pro-input-checkbox [formControl]="formGroup.controls.checkbox" ... />
++   <pro-input-chips [formControl]="formGroup.controls.chips" ... />
++   <pro-input-datepicker [formControl]="formGroup.controls.datepicker" ... />
++   <pro-input-dropdown [formControl]="formGroup.controls.dropdown" ... />
++   <pro-input-radio [formControl]="formGroup.controls.radio" ... />
++   <pro-input-textarea [formControl]="formGroup.controls.textarea" ... />
++   <pro-input-timepicker [formControl]="formGroup.controls.timepicker" ... />
++   <pro-input-toggle [formControl]="formGroup.controls.toggle" ... />
 + </form>
 ```
 

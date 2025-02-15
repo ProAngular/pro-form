@@ -1,5 +1,5 @@
 /** Prettier configuration and options. */
-const prettierConfig = {
+var prettierConfig = {
   $schema: 'https://json.schemastore.org/prettierrc',
   plugins: ['@trivago/prettier-plugin-sort-imports'],
   importOrderParserPlugins: ['typescript', 'decorators-legacy'],

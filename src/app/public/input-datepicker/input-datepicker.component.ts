@@ -11,15 +11,16 @@ import { MatInputModule } from '@angular/material/input';
 
 import { InputDirective } from '../input.directive';
 import { InputAppearance } from '../types';
+import { LoadingInputComponent } from '../utilities/loading-input.component';
 
 @Component({
   selector: 'pro-input-datepicker',
   templateUrl: './input-datepicker.component.html',
-  styleUrls: [],
   standalone: true,
   imports: [
     CommonModule,
     DateTimePipe,
+    LoadingInputComponent,
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,

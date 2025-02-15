@@ -74,6 +74,64 @@
     placeholder="Enter or select a time"
     hint="A time between 8 AM and 8 PM CST."
   ></pro-input-timepicker>
+  <!-- DROPDOWN - SINGLE -->
+  <pro-input-dropdown
+    [formControl]="formGroup.controls.dropdown"
+    hint="A single-select dropdown."
+    label="Dropdown"
+    placeholder="Select an option"
+  >
+    @for (option of dropdownOptions; track option) {
+      <pro-input-dropdown-option [value]="option.value">{{
+        option.label
+      }}</pro-input-dropdown-option>
+    }
+    <pro-input-dropdown-option-group label="Grouped Options">
+      @for (option of groupedDropdownOptions; track option) {
+        <pro-input-dropdown-option [value]="option.value">{{
+          option.label
+        }}</pro-input-dropdown-option>
+      }
+    </pro-input-dropdown-option-group>
+    <pro-input-dropdown-option disabled [value]="1"
+      >Disabled Option</pro-input-dropdown-option
+    >
+  </pro-input-dropdown>
+  <!-- DROPDOWN - MULTIPLE -->
+  <pro-input-dropdown
+    [formControl]="formGroup.controls.dropdownMultiple"
+    hint="A multi-select dropdown with a max of 2 selections."
+    label="Dropdown (Multiple)"
+    multiple
+    placeholder="Select multiple options"
+  >
+    @for (option of dropdownOptions; track option) {
+      <pro-input-dropdown-option [value]="option.value">{{
+        option.label
+      }}</pro-input-dropdown-option>
+    }
+    <pro-input-dropdown-option-group label="Grouped Options">
+      @for (option of groupedDropdownOptions; track option) {
+        <pro-input-dropdown-option [value]="option.value">{{
+          option.label
+        }}</pro-input-dropdown-option>
+      }
+    </pro-input-dropdown-option-group>
+    <pro-input-dropdown-option disabled [value]="1"
+      >Disabled Option</pro-input-dropdown-option
+    >
+  </pro-input-dropdown>
+  <!-- CHIPS -->
+  <pro-input-chips
+    [formControl]="formGroup.controls.chips"
+    hint="A max of 3 chips."
+    label="Chips"
+    multiple
+  >
+    @for (chip of chips; track chip) {
+      <pro-input-chip [value]="chip">{{ chip }}</pro-input-chip>
+    }
+  </pro-input-chips>
   <!-- OPTIONS RADIO -->
   <pro-input-radio
     [formControl]="formGroup.controls.optionsRadio"

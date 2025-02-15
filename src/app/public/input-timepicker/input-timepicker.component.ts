@@ -11,6 +11,7 @@ import { MatTimepickerModule } from '@angular/material/timepicker';
 
 import { InputDirective } from '../input.directive';
 import { InputAppearance } from '../types';
+import { LoadingInputComponent } from '../utilities/loading-input.component';
 
 @Component({
   selector: 'pro-input-timepicker',
@@ -20,6 +21,7 @@ import { InputAppearance } from '../types';
   imports: [
     CommonModule,
     DateTimePipe,
+    LoadingInputComponent,
     MatFormFieldModule,
     MatInputModule,
     MatTimepickerModule,
