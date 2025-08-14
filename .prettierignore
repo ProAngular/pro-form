@@ -7,10 +7,12 @@ public/
 
 # Do not ignore the following files
 !.github/
+!README.md
+!eslint.config.js
+!package.json
 !src/
 !src/app/
 !src/app/public/
-!README.md
 
 # Re-ignore sub-directories from the above exempt directories:
 .github/CODEOWNERS
