@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  inject,
   Input,
 } from '@angular/core';
 
@@ -13,7 +14,7 @@ import {
   standalone: true,
 })
 export class InputRadioOptionComponent<T> {
-  public constructor(private readonly elementRef: ElementRef<HTMLElement>) {}
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   @Input({ required: true }) public value!: T;
 

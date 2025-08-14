@@ -6,7 +6,7 @@ import { InputDropdownOptionComponent } from './input-dropdown-option.component'
 import { InputDropdownOptionGroupComponent } from './input-dropdown-option-group.component';
 import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingInputComponent } from '../utilities/loading-input.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,13 +17,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrl: './input-dropdown.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     FormsModule,
     LoadingInputComponent,
     MatFormFieldModule,
     MatSelectModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule
+],
   standalone: true,
 })
 export class InputDropdownComponent<T> extends InputDirective<T> {
@@ -76,7 +75,7 @@ export class InputDropdownComponent<T> extends InputDirective<T> {
   }
   
   @Input({ required: false, transform: coerceBooleanProperty }) 
-  public multiple: boolean = false;
+  public multiple = false;
 
   @Input({ required: false }) public compareWith: MatSelect['compareWith'] = (
     optionValue,

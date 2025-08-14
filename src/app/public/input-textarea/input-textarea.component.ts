@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,11 +13,10 @@ import { InputAppearance, InputAutocomplete } from '../types';
   styleUrls: [],
   standalone: true,
   imports: [
-    CommonModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputTextareaComponent extends InputDirective<string> {

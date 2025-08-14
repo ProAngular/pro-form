@@ -8,7 +8,7 @@ import {
 import { InputDirective } from '../input.directive';
 
 import { InputRadioOptionComponent } from './input-radio-option.component';
-import { CommonModule } from '@angular/common';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,11 +19,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./input-radio.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
   imports: [
-    CommonModule,
     MatFormFieldModule,
     MatRadioModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule
+],
   standalone: true,
 })
 export class InputRadioComponent<T> extends InputDirective<T> {

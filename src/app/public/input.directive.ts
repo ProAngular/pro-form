@@ -5,6 +5,7 @@ import {
   Optional,
   Self,
   forwardRef,
+  inject,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -28,13 +29,15 @@ let id = 0;
 })
 export abstract class InputDirective<T> implements ControlValueAccessor {
   public constructor(
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     @Optional() @Self() public ngControl: NgControl,
-    protected readonly elementRef: ElementRef,
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
   }
+
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   public get formControl(): FormControl<T> {
     return this.ngControl.control as FormControl<T>;

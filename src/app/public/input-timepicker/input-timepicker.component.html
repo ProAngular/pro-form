@@ -8,23 +8,25 @@
       [min]="min"
       [placeholder]="placeholder ?? ''"
       matInput
-    />
+      />
     <mat-timepicker-toggle [for]="timepicker" matSuffix />
     <mat-timepicker #timepicker [interval]="interval" />
     <mat-hint [title]="hint">{{ hint }}</mat-hint>
-    <mat-error *ngIf="formControl.invalid && formControl.touched">
-      @if (formControl.hasError('required')) {
-        {{ label }} is required.
-      } @else if (formControl.hasError('min')) {
-        {{ label }} must be at least
-        {{ formControl.errors?.['min'].min | dateTime: 'h:mm a (ZZZZ)' }}.
-      } @else if (formControl.hasError('max')) {
-        {{ label }} cannot exceed
-        {{ formControl.errors?.['max'].max | dateTime: 'h:mm a (ZZZZ)' }}.
-      }
-    </mat-error>
+    @if (formControl.invalid && formControl.touched) {
+      <mat-error>
+        @if (formControl.hasError('required')) {
+          {{ label }} is required.
+        } @else if (formControl.hasError('min')) {
+          {{ label }} must be at least
+          {{ formControl.errors?.['min'].min | dateTime: 'h:mm a (ZZZZ)' }}.
+        } @else if (formControl.hasError('max')) {
+          {{ label }} cannot exceed
+          {{ formControl.errors?.['max'].max | dateTime: 'h:mm a (ZZZZ)' }}.
+        }
+      </mat-error>
+    }
   </mat-form-field>
 }
 @else {
-  <pro-loading-input [label]="label" />
+<pro-loading-input [label]="label" />
 }

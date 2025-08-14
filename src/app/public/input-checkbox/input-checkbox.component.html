@@ -1,8 +1,10 @@
 <mat-checkbox [formControl]="formControl" [labelPosition]="labelPosition">{{
   label + (isRequired ? '*' : '')
 }}</mat-checkbox>
-<mat-error *ngIf="formControl.invalid && formControl.touched">
-  @if (formControl.hasError('required')) {
-    {{ label }} is required.
-  }
-</mat-error>
+@if (formControl.invalid && formControl.touched) {
+  <mat-error>
+    @if (formControl.hasError('required')) {
+      {{ label }} is required.
+    }
+  </mat-error>
+}

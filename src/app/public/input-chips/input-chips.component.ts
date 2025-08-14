@@ -3,7 +3,7 @@ import { InputDirective } from '../input.directive';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { MatChipListbox, MatChipsModule } from '@angular/material/chips';
 import { InputChipComponent } from './input-chip.component';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -13,12 +13,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrl: './input-chips.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     FormsModule,
     MatChipsModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule
+],
   standalone: true,
 })
 export class InputChipsComponent extends InputDirective<string> {
@@ -30,7 +29,7 @@ export class InputChipsComponent extends InputDirective<string> {
   @Input() public max: number | undefined;
 
   @Input({ required: false, transform: coerceBooleanProperty }) 
-  public multiple: boolean = false;
+  public multiple = false;
 
   @Input({ required: false }) public compareWith: MatChipListbox['compareWith'] = (
     optionValue,

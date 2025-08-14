@@ -3,7 +3,7 @@ import { interval } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { InputAppearance } from '../types';
-import { CommonModule } from '@angular/common';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -20,11 +20,10 @@ import { MatInputModule } from '@angular/material/input';
   `,
   styles: [`:host { width: 100%; }`],
   imports: [
-    CommonModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule
+],
   standalone: true,
 })
 export class LoadingInputComponent implements OnInit {

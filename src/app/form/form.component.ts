@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -55,13 +55,15 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent extends FormDirective<FormGroupExample> {
-  public constructor(private readonly snackBar: MatSnackBar) {
+  public constructor() {
     super();
 
     this.today = DateTime.local().startOf('day');
     this.thirtyDaysFromNow = this.today.plus({ months: 1 });
     this.toggleDisabledFormControl = new FormControl<boolean>(false);
   }
+
+  private readonly snackBar = inject(MatSnackBar);
 
   protected override readonly formGroup = formGroupExample;
   protected readonly chips = chips;

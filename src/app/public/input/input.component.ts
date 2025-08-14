@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,12 +13,11 @@ import { LoadingInputComponent } from '../utilities/loading-input.component';
   templateUrl: './input.component.html',
   standalone: true,
   imports: [
-    CommonModule,
     LoadingInputComponent,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent extends InputDirective<string> {
