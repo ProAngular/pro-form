@@ -32,6 +32,7 @@
     "@angular/forms": ">=20 <21",
     "@angular/material": ">=20 <21",
     "@angular/material-luxon-adapter": ">=20 <21",
+    "@ngneat/until-destroy": ">=10 <11",
     "luxon": ">=3 <4",
     "rxjs": ">=7.8 <8",
     "zone.js": ">=0.15 <0.16"
