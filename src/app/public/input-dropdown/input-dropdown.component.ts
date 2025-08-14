@@ -1,4 +1,5 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,11 +16,14 @@ import {
   MatSelectModule,
 } from '@angular/material/select';
 
+import { InputLoadingComponent } from '../input-loading/loading-input.component';
 import { InputDirective } from '../input.directive';
 import { InputAppearance } from '../types';
-import { LoadingInputComponent } from '../utilities/loading-input.component';
 import { InputDropdownOptionGroupComponent } from './input-dropdown-option-group.component';
 import { InputDropdownOptionComponent } from './input-dropdown-option.component';
+
+const rF = { required: false };
+const rFc = { required: false, transform: coerceBooleanProperty };
 
 @Component({
   selector: 'pro-input-dropdown',
@@ -27,8 +31,9 @@ import { InputDropdownOptionComponent } from './input-dropdown-option.component'
   styleUrl: './input-dropdown.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    CommonModule,
     FormsModule,
-    LoadingInputComponent,
+    InputLoadingComponent,
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
@@ -46,7 +51,7 @@ export class InputDropdownComponent<T> extends InputDirective<T> {
 
   @ViewChild(MatSelect) public readonly matSelect?: MatSelect;
 
-  @Input({ required: false })
+  @Input(rF)
   public appearance: InputAppearance = 'outline';
 
   @Input() public max: number | undefined;
@@ -90,10 +95,9 @@ export class InputDropdownComponent<T> extends InputDirective<T> {
     return [];
   }
 
-  @Input({ required: false, transform: coerceBooleanProperty })
-  public multiple = false;
+  @Input(rFc) public multiple = false;
 
-  @Input({ required: false }) public compareWith: MatSelect['compareWith'] = (
+  @Input(rF) public compareWith: MatSelect['compareWith'] = (
     optionValue,
     selectedValue,
   ) => {
