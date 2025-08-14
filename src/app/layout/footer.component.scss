@@ -19,7 +19,16 @@ footer {
   text-align: center;
   width: 100%;
 
-  > a > img {
-    max-width: 200px;
+  a {
+    color: white;
+    font-weight: bolder;
+
+    &:hover {
+      color: lightgray;
+    }
+
+    > img {
+      max-width: 200px;
+    }
   }
 }
