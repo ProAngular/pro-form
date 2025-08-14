@@ -7,14 +7,14 @@ import {
 import { AbstractControl, FormGroup } from '@angular/forms';
 
 import { InputCheckboxComponent } from './input-checkbox/input-checkbox.component';
+import { InputChipsComponent } from './input-chips/input-chips.component';
 import { InputDatepickerComponent } from './input-datepicker/input-datepicker.component';
+import { InputDropdownComponent } from './input-dropdown/input-dropdown.component';
 import { InputRadioComponent } from './input-radio/input-radio.component';
 import { InputTextareaComponent } from './input-textarea/input-textarea.component';
 import { InputTimepickerComponent } from './input-timepicker/input-timepicker.component';
 import { InputToggleComponent } from './input-toggle/input-toggle.component';
 import { InputComponent } from './input/input.component';
-import { InputDropdownComponent } from './input-dropdown/input-dropdown.component';
-import { InputChipsComponent } from './input-chips/input-chips.component';
 
 @Directive()
 export class FormDirective<T extends { [K in keyof T]: AbstractControl }>

@@ -1,5 +1,4 @@
 import { DateTime } from 'luxon';
-import { DateTimePipe } from '../pipes';
 
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
@@ -10,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { InputDirective } from '../input.directive';
+import { DateTimePipe } from '../pipes';
 import { InputAppearance } from '../types';
 import { LoadingInputComponent } from '../utilities/loading-input.component';
 

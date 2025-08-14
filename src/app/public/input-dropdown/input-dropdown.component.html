@@ -6,20 +6,18 @@
       [formControl]="formControl"
       [multiple]="multiple"
       [placeholder]="placeholder || ''"
-      >
+    >
       @for (option of options; track option) {
-        <mat-option
-          [disabled]="option.disabled"
-          [value]="option.value"
-        >{{ option.element.textContent }}</mat-option>
+        <mat-option [disabled]="option.disabled" [value]="option.value">{{
+          option.element.textContent
+        }}</mat-option>
       }
       @for (optionGroup of optionGroups; track optionGroup) {
         <mat-optgroup [label]="optionGroup.label">
           @for (option of optionGroup.options; track option) {
-            <mat-option
-              [disabled]="option.disabled"
-              [value]="option.value"
-            >{{ option.element.textContent }}</mat-option>
+            <mat-option [disabled]="option.disabled" [value]="option.value">{{
+              option.element.textContent
+            }}</mat-option>
           }
         </mat-optgroup>
       }
@@ -30,14 +28,15 @@
         @if (formControl.hasError('required')) {
           {{ label }} is required.
         } @else if (formControl.hasError('maxlength')) {
-          {{ label }} cannot exceed {{ formControl.errors?.['maxlength'].requiredLength }} selections.
+          {{ label }} cannot exceed
+          {{ formControl.errors?.['maxlength'].requiredLength }} selections.
         } @else if (formControl.hasError('minlength')) {
-          {{ label }} must have at least {{ formControl.errors?.['minlength'].requiredLength }} selections.
+          {{ label }} must have at least
+          {{ formControl.errors?.['minlength'].requiredLength }} selections.
         }
       </mat-error>
     }
   </mat-form-field>
-}
-@else {
-<pro-loading-input [label]="label" />
+} @else {
+  <pro-loading-input [label]="label" />
 }

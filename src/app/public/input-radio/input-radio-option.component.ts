@@ -3,8 +3,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  inject,
   Input,
+  inject,
 } from '@angular/core';
 
 @Component({

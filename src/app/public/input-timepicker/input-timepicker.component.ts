@@ -1,5 +1,4 @@
 import { DateTime } from 'luxon';
-import { DateTimePipe } from '../pipes/date-time.pipe';
 
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
@@ -10,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 
 import { InputDirective } from '../input.directive';
+import { DateTimePipe } from '../pipes/date-time.pipe';
 import { InputAppearance } from '../types';
 import { LoadingInputComponent } from '../utilities/loading-input.component';
 

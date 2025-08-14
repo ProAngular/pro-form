@@ -1,11 +1,12 @@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { interval } from 'rxjs';
+
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { InputAppearance } from '../types';
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+
+import { InputAppearance } from '../types';
 
 @UntilDestroy()
 @Component({
@@ -18,12 +19,14 @@ import { MatInputModule } from '@angular/material/input';
       }
     </mat-form-field>
   `,
-  styles: [`:host { width: 100%; }`],
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule
-],
+  styles: [
+    `
+      :host {
+        width: 100%;
+      }
+    `,
+  ],
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   standalone: true,
 })
 export class LoadingInputComponent implements OnInit {
@@ -41,13 +44,11 @@ export class LoadingInputComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe(() => {
         if (this.loadingText === 'Loading') {
-          this.loadingText = this.label 
-            ? `Loading "${this.label}".` 
+          this.loadingText = this.label
+            ? `Loading "${this.label}".`
             : 'Loading.';
         } else if (this.loadingText.endsWith('...')) {
-          this.loadingText = this.label 
-            ? `Loading "${this.label}"` 
-            : 'Loading';
+          this.loadingText = this.label ? `Loading "${this.label}"` : 'Loading';
         } else {
           this.loadingText = this.loadingText + '.';
         }

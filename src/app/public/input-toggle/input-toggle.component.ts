@@ -1,7 +1,6 @@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { startWith } from 'rxjs';
 
-
 import {
   ChangeDetectionStrategy,
   Component,
@@ -25,8 +24,8 @@ import { InputDirective } from '../input.directive';
     FormsModule,
     MatFormFieldModule,
     MatSlideToggleModule,
-    ReactiveFormsModule
-],
+    ReactiveFormsModule,
+  ],
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class InputToggleComponent

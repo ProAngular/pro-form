@@ -3,12 +3,9 @@
   [compareWith]="compareWith"
   [formControl]="formControl"
   [multiple]="multiple"
-  >
+>
   @for (chip of chips; track chip) {
-    <mat-chip-option
-      [disabled]="chip.disabled"
-      [value]="chip.value"
-      >{{
+    <mat-chip-option [disabled]="chip.disabled" [value]="chip.value">{{
       chip.element.textContent
     }}</mat-chip-option>
   }
@@ -18,9 +15,11 @@
     @if (formControl.hasError('required')) {
       {{ label }} is required.
     } @else if (formControl.hasError('maxlength')) {
-      {{ label }} cannot exceed {{ formControl.errors?.['maxlength'].requiredLength }} selections.
+      {{ label }} cannot exceed
+      {{ formControl.errors?.['maxlength'].requiredLength }} selections.
     } @else if (formControl.hasError('minlength')) {
-      {{ label }} must have at least {{ formControl.errors?.['minlength'].requiredLength }} selections.
+      {{ label }} must have at least
+      {{ formControl.errors?.['minlength'].requiredLength }} selections.
     }
   </mat-error>
 }

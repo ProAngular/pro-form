@@ -4,9 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+import { InputLoadingComponent } from '../input-loading/loading-input.component';
 import { InputDirective } from '../input.directive';
 import { InputAppearance, InputAutocomplete, InputType } from '../types';
-import { InputLoadingComponent } from '../input-loading/loading-input.component';
 
 const rF = { required: false };
 

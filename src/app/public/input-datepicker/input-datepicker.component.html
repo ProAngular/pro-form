@@ -9,7 +9,7 @@
         [min]="min"
         [placeholder]="placeholder ?? ''"
         matInput
-        />
+      />
     } @else {
       Loading{{ label ? ' ' + label : '' }}...
     }
@@ -30,7 +30,6 @@
       </mat-error>
     }
   </mat-form-field>
-}
-@else {
-<pro-loading-input [label]="label" />
+} @else {
+  <pro-loading-input [label]="label" />
 }

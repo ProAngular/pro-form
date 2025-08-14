@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon';
-import { isNumber } from '../utilities';
 
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+
+import { isNumber } from '../utilities';
 
 export class CustomValidators {
   /**
