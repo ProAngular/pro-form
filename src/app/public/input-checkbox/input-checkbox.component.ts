@@ -1,7 +1,7 @@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { startWith } from 'rxjs';
 
-
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -16,6 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { InputDirective } from '../input.directive';
 
+const rF = { required: false };
+
 @UntilDestroy()
 @Component({
   selector: 'pro-input-checkbox',
@@ -23,18 +25,19 @@ import { InputDirective } from '../input.directive';
   styleUrls: ['./input-checkbox.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
     FormsModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    ReactiveFormsModule
-],
+    ReactiveFormsModule,
+  ],
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class InputCheckboxComponent
   extends InputDirective<boolean | null>
   implements OnInit
 {
-  @Input({ required: false })
+  @Input(rF)
   public labelPosition: 'before' | 'after' = 'after';
 
   // eslint-disable-next-line @angular-eslint/no-output-native
