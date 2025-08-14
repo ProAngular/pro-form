@@ -8,10 +8,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+import { InputLoadingComponent } from '../input-loading/loading-input.component';
 import { InputDirective } from '../input.directive';
 import { DateTimePipe } from '../pipes';
 import { InputAppearance } from '../types';
-import { LoadingInputComponent } from '../utilities/loading-input.component';
+
+const rF = { required: false };
 
 @Component({
   selector: 'pro-input-datepicker',
@@ -20,7 +22,7 @@ import { LoadingInputComponent } from '../utilities/loading-input.component';
   imports: [
     CommonModule,
     DateTimePipe,
-    LoadingInputComponent,
+    InputLoadingComponent,
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
@@ -30,7 +32,7 @@ import { LoadingInputComponent } from '../utilities/loading-input.component';
   standalone: true,
 })
 export class InputDatepickerComponent extends InputDirective<DateTime> {
-  @Input({ required: false }) public appearance: InputAppearance = 'outline';
-  @Input({ required: false }) public max: DateTime | undefined;
-  @Input({ required: false }) public min: DateTime | undefined;
+  @Input(rF) public appearance: InputAppearance = 'outline';
+  @Input(rF) public max: DateTime | undefined;
+  @Input(rF) public min: DateTime | undefined;
 }

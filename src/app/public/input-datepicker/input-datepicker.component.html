@@ -1,18 +1,14 @@
 @if (formControl) {
   <mat-form-field [appearance]="appearance">
     <mat-label>{{ label }}</mat-label>
-    @if (formControl) {
-      <input
-        [formControl]="formControl"
-        [matDatepicker]="datepicker"
-        [max]="max"
-        [min]="min"
-        [placeholder]="placeholder ?? ''"
-        matInput
-      />
-    } @else {
-      Loading{{ label ? ' ' + label : '' }}...
-    }
+    <input
+      [formControl]="formControl"
+      [matDatepicker]="datepicker"
+      [max]="max"
+      [min]="min"
+      [placeholder]="placeholder ?? ''"
+      matInput
+    />
     <mat-datepicker-toggle [for]="datepicker" matSuffix />
     <mat-datepicker #datepicker />
     <mat-hint [title]="hint">{{ hint }}</mat-hint>
@@ -31,5 +27,5 @@
     }
   </mat-form-field>
 } @else {
-  <pro-loading-input [label]="label" />
+  <pro-input-loading [label]="label" />
 }
