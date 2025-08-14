@@ -76,6 +76,10 @@ export class FormComponent extends FormDirective<FormGroupExample> {
   protected readonly validation = formGroupExampleValidation;
 
   protected prefillForm(): void {
+    if (this.formGroup.disabled) {
+      return;
+    }
+
     this.formGroup.setValue({
       checkboxOptional: false,
       checkboxRequired: true,

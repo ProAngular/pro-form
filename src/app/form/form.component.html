@@ -160,14 +160,31 @@
 <div class="actions">
   <button
     (click)="reset()"
-    [disabled]="formGroup.pristine && formGroup.untouched"
+    [disabled]="
+      (formGroup.pristine && formGroup.untouched) || formGroup.disabled
+    "
     label="Reset"
     mat-stroked-button
   >
     Reset
   </button>
-  <button (click)="prefillForm()" label="Fill" mat-flat-button>Fill</button>
-  <button (click)="submit()" label="Submit" mat-flat-button>Submit</button>
+  <button
+    (click)="prefillForm()"
+    [disabled]="formGroup.disabled"
+    label="Fill"
+    mat-flat-button
+  >
+    Fill
+  </button>
+  <button
+    (click)="submit()"
+    [disabled]="formGroup.disabled"
+    label="Submit"
+    mat-flat-button
+    type="submit"
+  >
+    Submit
+  </button>
   <pro-input-checkbox
     (change)="toggleDisabled($event)"
     [formControl]="toggleDisabledFormControl"
