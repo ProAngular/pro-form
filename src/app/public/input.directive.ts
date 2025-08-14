@@ -2,8 +2,6 @@ import {
   Directive,
   ElementRef,
   Input,
-  Optional,
-  Self,
   forwardRef,
   inject,
 } from '@angular/core';
@@ -16,9 +14,9 @@ import {
 } from '@angular/forms';
 
 let id = 0;
+const rF = { required: false };
 
 @Directive({
-  selector: '[proInputDirective][formControl][label]',
   providers: [
     {
       multi: true,
@@ -28,24 +26,26 @@ let id = 0;
   ],
 })
 export abstract class InputDirective<T> implements ControlValueAccessor {
-  public constructor(
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    @Optional() @Self() public ngControl: NgControl,
-  ) {
+  public constructor() {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
   }
 
-  private readonly elementRef = inject(ElementRef<HTMLElement>);
+  public elementRef = inject(ElementRef);
+  public ngControl = inject(NgControl, { self: true, optional: true });
 
   public get formControl(): FormControl<T> {
+    if (!this.ngControl) {
+      throw new Error('Input requires a NgControl to be provided.');
+    }
+
     return this.ngControl.control as FormControl<T>;
   }
 
-  @Input({ required: false }) public hint: string | number | null = null;
-  @Input({ required: false }) public id = `pro-input-${++id}`;
-  @Input({ required: false }) public placeholder: string | null = null;
+  @Input(rF) public hint: string | number | null = null;
+  @Input(rF) public id = `pro-input-${++id}`;
+  @Input(rF) public placeholder: string | null = null;
   @Input({ required: true }) public label!: string;
 
   public get isRequired(): boolean {

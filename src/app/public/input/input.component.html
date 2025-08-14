@@ -1,20 +1,16 @@
 @if (formControl) {
   <mat-form-field [appearance]="appearance">
     <mat-label>{{ label }}</mat-label>
-    @if (formControl) {
-      <input
-        [attr.step]="step"
-        [autocomplete]="autocomplete"
-        [formControl]="formControl"
-        [id]="id"
-        [name]="name || id"
-        [placeholder]="placeholder || ''"
-        [type]="type"
-        matInput
-        />
-    } @else {
-      Loading{{ label ? ' ' + label : '' }}...
-    }
+    <input
+      [attr.step]="step"
+      [autocomplete]="autocomplete"
+      [formControl]="formControl"
+      [id]="id"
+      [name]="name || id"
+      [placeholder]="placeholder || ''"
+      [type]="type"
+      matInput
+    />
     <mat-hint [title]="hint">{{ hint }}</mat-hint>
     @if (formControl.invalid && formControl.touched) {
       <mat-error>
@@ -40,8 +36,6 @@
       </mat-error>
     }
   </mat-form-field>
+} @else {
+  <pro-input-loading [label]="label" />
 }
-@else {
-<pro-loading-input [label]="label" />
-}
-

@@ -16,7 +16,7 @@ import { InputComponent } from './input/input.component';
 import { InputDropdownComponent } from './input-dropdown/input-dropdown.component';
 import { InputChipsComponent } from './input-chips/input-chips.component';
 
-@Directive({ selector: '[proFormDirective][formGroup]' })
+@Directive()
 export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
   implements AfterViewInit
 {
@@ -27,7 +27,7 @@ export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
 
   @ViewChildren(InputCheckboxComponent)
   private readonly inputCheckboxes!: QueryList<InputCheckboxComponent>;
-  
+
   @ViewChildren(InputChipsComponent)
   private readonly inputChips!: QueryList<InputChipsComponent>;
 
@@ -108,9 +108,9 @@ export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
     this.formGroup.reset();
   }
 
-  /** 
+  /**
    * Scroll to the first invalid control in the form.
-   * 
+   *
    * @returns The label of the first invalid control.
    */
   public scrollToFirstInvalidControl(): string | null {
