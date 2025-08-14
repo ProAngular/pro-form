@@ -1,6 +1,7 @@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { startWith } from 'rxjs';
 
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,6 +22,7 @@ import { InputDirective } from '../input.directive';
   styleUrls: ['./input-toggle.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
     FormsModule,
     MatFormFieldModule,
     MatSlideToggleModule,
