@@ -12,15 +12,6 @@ interface Schema {
   withLuxon?: boolean;
 }
 
-function resolveMaterialAdapterVersion(tree: Tree): string {
-  const dep = getPackageJsonDependency(tree, '@angular/material', 'package.json');
-  if (dep?.version) {
-    const m = dep.version.match(/^[~^]?(\d+)\./);
-    if (m) return `^${m[1]}.0.0`;
-  }
-  return '^20.0.0';
-}
-
 function ensureDep(tree: Tree, name: string, version: string): void {
   addPackageJsonDependency(tree, {
     type: NodeDependencyType.Default,
@@ -52,4 +43,13 @@ export function ngAdd(options: Schema = {}): Rule {
 
     return tree;
   };
+}
+
+function resolveMaterialAdapterVersion(tree: Tree): string {
+  const dep = getPackageJsonDependency(tree, '@angular/material', 'package.json');
+  if (dep?.version) {
+    const m = dep.version.match(/^[~^]?(\d+)\./);
+    if (m) return `^${m[1]}.0.0`;
+  }
+  return '^20.0.0';
 }
