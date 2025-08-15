@@ -9,8 +9,9 @@
     "node": "^20.19.0 || ^22.12.0 || ^24.0.0"
   },
   "scripts": {
-    "build": "ng build",
+    "build": "ng build && npm run build:schematics",
     "build:prod": "ng build --configuration production",
+    "build:schematics": "tsc -p tsconfig.schematics.json",
     "lint": "ng lint",
     "ng": "ng",
     "npm-build-package": "ng-packagr -p ng-package.json",
@@ -38,6 +39,7 @@
     "zone.js": ">=0.15 <0.16"
   },
   "dependencies": {
+    "@proangular/pro-form": "file:proangular-pro-form-20.0.0.tgz",
     "tslib": "^2.8.1"
   },
   "devDependencies": {
@@ -107,5 +109,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "schematics": "./.schematics/collection.json",
+  "files": [
+    "dist/",
+    ".schematics/"
+  ],
   "main": "src/main.ts"
 }
