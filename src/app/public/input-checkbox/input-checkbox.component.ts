@@ -16,6 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { InputDirective } from '../input.directive';
 
+const rF = { required: false };
+
 @UntilDestroy()
 @Component({
   selector: 'pro-input-checkbox',
@@ -35,7 +37,7 @@ export class InputCheckboxComponent
   extends InputDirective<boolean | null>
   implements OnInit
 {
-  @Input({ required: false })
+  @Input(rF)
   public labelPosition: 'before' | 'after' = 'after';
 
   // eslint-disable-next-line @angular-eslint/no-output-native

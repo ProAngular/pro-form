@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  Input,
+  QueryList,
+} from '@angular/core';
+
 import { InputDropdownOptionComponent } from './input-dropdown-option.component';
 
 @Component({
@@ -9,8 +16,8 @@ import { InputDropdownOptionComponent } from './input-dropdown-option.component'
 })
 export class InputDropdownOptionGroupComponent {
   @Input({ required: true }) public label!: string;
-  
-  @ContentChildren(InputDropdownOptionComponent) 
-  public readonly options: QueryList<InputDropdownOptionComponent> = 
+
+  @ContentChildren(InputDropdownOptionComponent)
+  public readonly options: QueryList<InputDropdownOptionComponent> =
     new QueryList<InputDropdownOptionComponent>();
 }

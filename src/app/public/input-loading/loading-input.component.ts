@@ -1,6 +1,7 @@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { interval } from 'rxjs';
 
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,9 +9,11 @@ import { MatInputModule } from '@angular/material/input';
 
 import { InputAppearance } from '../types';
 
+const rF = { required: false };
+
 @UntilDestroy()
 @Component({
-  selector: 'pro-loading-input',
+  selector: 'pro-input-loading',
   template: `
     <mat-form-field [appearance]="appearance">
       <input [formControl]="formControl" matInput type="text" />
@@ -19,20 +22,19 @@ import { InputAppearance } from '../types';
       }
     </mat-form-field>
   `,
-  styles: [
-    `
-      :host {
-        width: 100%;
-      }
-    `,
+  styles: [':host { width: 100%; }'],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   standalone: true,
 })
-export class LoadingInputComponent implements OnInit {
-  @Input({ required: false }) public appearance: InputAppearance = 'outline';
-  @Input({ required: false }) public hint?: string;
-  @Input({ required: false }) public label?: string;
+export class InputLoadingComponent implements OnInit {
+  @Input(rF) public appearance: InputAppearance = 'outline';
+  @Input(rF) public hint?: string;
+  @Input(rF) public label?: string;
 
   protected readonly formControl = new FormControl<string | null>(null);
   protected loadingText = 'Loading';

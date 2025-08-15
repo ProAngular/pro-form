@@ -4,9 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+import { InputLoadingComponent } from '../input-loading/loading-input.component';
 import { InputDirective } from '../input.directive';
 import { InputAppearance, InputAutocomplete, InputType } from '../types';
-import { LoadingInputComponent } from '../utilities/loading-input.component';
+
+const rF = { required: false };
 
 @Component({
   selector: 'pro-input',
@@ -14,7 +16,7 @@ import { LoadingInputComponent } from '../utilities/loading-input.component';
   standalone: true,
   imports: [
     CommonModule,
-    LoadingInputComponent,
+    InputLoadingComponent,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
@@ -22,72 +24,44 @@ import { LoadingInputComponent } from '../utilities/loading-input.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent extends InputDirective<string> {
-  @Input({ required: false }) public appearance: InputAppearance = 'outline';
-  @Input({ required: false }) public autocomplete: InputAutocomplete = 'off';
-  @Input({ required: false }) public name: string | undefined;
-  @Input({ required: false }) public type: InputType = 'text';
+  @Input(rF) public appearance: InputAppearance = 'outline';
+  @Input(rF) public autocomplete: InputAutocomplete = 'off';
 
-  @Input({ required: false }) public set max(value: number | string) {
-    const maxParsed = Number(value);
-    if (isNaN(maxParsed)) {
-      this.#max = undefined;
-      return;
-    }
-    this.#max = maxParsed;
+  @Input(rF) public set max(value: number | string) {
+    this.setMax(value);
   }
   public get max(): number | undefined {
-    if (this.type !== 'number') {
-      return undefined;
-    }
-    return this.#max;
+    return this.getMax();
   }
   #max: number | undefined;
 
-  @Input({ required: false }) public set min(value: number | string) {
-    const minParsed = Number(value);
-    if (isNaN(minParsed)) {
-      this.#min = undefined;
-      return;
-    }
-
-    this.#min = minParsed;
+  @Input(rF) public set min(value: number | string) {
+    this.setMin(value);
   }
   public get min(): number | undefined {
-    if (this.type !== 'number') {
-      return undefined;
-    }
-    return this.#min;
+    return this.getMin();
   }
   #min: number | undefined;
 
-  @Input({ required: false }) public set maxLength(value: number | string) {
-    const maxLengthParsed = Number(value);
-    if (isNaN(maxLengthParsed)) {
-      this.#maxLength = undefined;
-      return;
-    }
-    this.#maxLength = maxLengthParsed;
+  @Input(rF) public set maxLength(value: number | string) {
+    this.setMaxLength(value);
   }
   public get maxLength(): number | undefined {
     return this.#maxLength;
   }
   #maxLength: number | undefined;
 
-  @Input({ required: false }) public set minLength(value: number | string) {
-    const minLengthParsed = Number(value);
-    if (isNaN(minLengthParsed)) {
-      this.#minLength = undefined;
-      return;
-    }
-
-    this.#minLength = minLengthParsed;
+  @Input(rF) public set minLength(value: number | string) {
+    this.setMinLength(value);
   }
   public get minLength(): number | undefined {
     return this.#minLength;
   }
   #minLength: number | undefined;
 
-  @Input({ required: false }) public set step(value: number | string) {
+  @Input(rF) public name: string | undefined;
+
+  @Input(rF) public set step(value: number | string) {
     const stepParsed = Number(value);
     if (isNaN(stepParsed)) {
       this.#step = undefined;
@@ -103,4 +77,58 @@ export class InputComponent extends InputDirective<string> {
     return this.#step;
   }
   #step: number | undefined;
+
+  @Input(rF) public type: InputType = 'text';
+
+  private getMax(): number | undefined {
+    if (this.type !== 'number') {
+      return undefined;
+    }
+    return this.#max;
+  }
+
+  private getMin(): number | undefined {
+    if (this.type !== 'number') {
+      return undefined;
+    }
+    return this.#min;
+  }
+
+  private setMax(value: number | string): void {
+    const maxParsed = Number(value);
+    if (isNaN(maxParsed)) {
+      this.#max = undefined;
+      return;
+    }
+    this.#max = maxParsed;
+  }
+
+  private setMaxLength(value: number | string): void {
+    const maxLengthParsed = Number(value);
+    if (isNaN(maxLengthParsed)) {
+      this.#maxLength = undefined;
+      return;
+    }
+    this.#maxLength = maxLengthParsed;
+  }
+
+  private setMin(value: number | string): void {
+    const minParsed = Number(value);
+    if (isNaN(minParsed)) {
+      this.#min = undefined;
+      return;
+    }
+
+    this.#min = minParsed;
+  }
+
+  private setMinLength(value: number | string): void {
+    const minLengthParsed = Number(value);
+    if (isNaN(minLengthParsed)) {
+      this.#minLength = undefined;
+      return;
+    }
+
+    this.#minLength = minLengthParsed;
+  }
 }

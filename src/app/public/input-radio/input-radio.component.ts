@@ -1,17 +1,16 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
   QueryList,
 } from '@angular/core';
-
-import { InputDirective } from '../input.directive';
-
-import { InputRadioOptionComponent } from './input-radio-option.component';
-import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { InputDirective } from '../input.directive';
+import { InputRadioOptionComponent } from './input-radio-option.component';
 
 @Component({
   selector: 'pro-input-radio',

@@ -1,5 +1,5 @@
 import { coerceElement } from '@angular/cdk/coercion';
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { MatChip } from '@angular/material/chips';
 
 @Component({
@@ -8,9 +8,7 @@ import { MatChip } from '@angular/material/chips';
   standalone: true,
 })
 export class InputChipComponent extends MatChip {
-  public constructor(private readonly elementRef: ElementRef<HTMLElement>) {
-    super();
-  }
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   public get element(): HTMLElement {
     return coerceElement(this.elementRef);

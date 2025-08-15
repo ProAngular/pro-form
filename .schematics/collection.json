@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add pro-form and required luxon date adapter",
+      "factory": "./ng-add/index.js#ngAdd",
+      "schema": "./ng-add/schema.json"
+    }
+  }
+}
