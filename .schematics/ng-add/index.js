@@ -3,6 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ngAdd = ngAdd;
 const dependencies_1 = require("@schematics/angular/utility/dependencies");
 const tasks_1 = require("@angular-devkit/schematics/tasks");
+function resolveMaterialAdapterVersion(tree) {
+    const dep = (0, dependencies_1.getPackageJsonDependency)(tree, '@angular/material', 'package.json');
+    if (dep === null || dep === void 0 ? void 0 : dep.version) {
+        const m = dep.version.match(/^[~^]?(\d+)\./);
+        if (m)
+            return `^${m[1]}.0.0`;
+    }
+    return '^20.0.0';
+}
 function ensureDep(tree, name, version) {
     (0, dependencies_1.addPackageJsonDependency)(tree, {
         type: dependencies_1.NodeDependencyType.Default,
@@ -30,13 +39,4 @@ function ngAdd(options = {}) {
         }
         return tree;
     };
-}
-function resolveMaterialAdapterVersion(tree) {
-    const dep = (0, dependencies_1.getPackageJsonDependency)(tree, '@angular/material', 'package.json');
-    if (dep === null || dep === void 0 ? void 0 : dep.version) {
-        const m = dep.version.match(/^[~^]?(\d+)\./);
-        if (m)
-            return `^${m[1]}.0.0`;
-    }
-    return '^20.0.0';
 }
