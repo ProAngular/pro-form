@@ -10,11 +10,11 @@
   },
   "scripts": {
     "build": "ng build && npm run build:schematics",
+    "build:lib": "npm run build:schematics && ng-packagr -p ng-package.json",
     "build:prod": "ng build --configuration production",
     "build:schematics": "tsc -p tsconfig.schematics.json",
     "lint": "ng lint",
     "ng": "ng",
-    "npm-build-package": "ng-packagr -p ng-package.json",
     "postinstall": "is-ci || husky install",
     "prettier": "prettier --write . --log-level silent",
     "prettier:check": "prettier --check .",
@@ -106,7 +106,8 @@
     "url": "https://github.com/sponsors/proangular"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "directory": "dist/npm"
   },
   "schematics": "./.schematics/collection.json",
   "files": [
