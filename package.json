@@ -39,7 +39,6 @@
     "zone.js": ">=0.15 <0.16"
   },
   "dependencies": {
-    "@proangular/pro-form": "file:proangular-pro-form-20.0.0.tgz",
     "tslib": "^2.8.1"
   },
   "devDependencies": {
