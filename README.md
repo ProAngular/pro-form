@@ -1,11 +1,17 @@
-<p align="center">
+<div align="center">
   <a href="https://www.ProAngular.com" target="_blank">
     <img src="https://raw.githubusercontent.com/ProAngular/pro-form/refs/heads/main/public/images/pro-angular-logo.png" />
   </a>
   <h1 align="center">
     <a href="https://www.ProAngular.com" target="_blank">Pro Angular</a>: Form Components
   </h1>
-</p>
+  <a href="https://github.com/ProAngular/pro-form" target="_blank">
+    View Github Repository
+  </a>
+  <p align="center">
+    An abstraction of Angular Material form controls that speeds up form building with drop in, standalone inputs, unified labels, hints, and errors, plus helpers like scroll to first error and focus on invalid. Built for modern Angular and plugs straight into Reactive Forms to cut boilerplate.
+  </p>
+</div>
 
 <!---------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------->
@@ -20,8 +26,6 @@
 [![Size](https://img.shields.io/bundlephobia/minzip/@proangular/pro-form.svg)](https://bundlephobia.com/result?p=ProAngular/pro-form)
 [![Demo Status](https://badgen.net/badge/Demo/Online/green)](https://www.ProAngular.com/demos/pro-form)
 [![Website Status](https://img.shields.io/website?down_color=lightgrey&down_message=Offline&label=Website&up_color=green&up_message=Online&url=https%3A%2F%2Fwww.proangular.com)](https://www.proangular.com)
-[![Gitter Chat](https://badges.gitter.im/ProAngular/lobby.svg)](https://gitter.im/ProAngular/community)
-[![Discord Chat](https://img.shields.io/discord/1003103094588055552?label=Discord)](https://discord.com/channels/1003103094588055552)
 [![Sponsors](https://img.shields.io/github/sponsors/proangular?label=Sponsors)](https://github.com/sponsors/ProAngular)
 [![License](https://img.shields.io/npm/l/express.svg?maxAge=2592000)](/LICENSE)
 [![GitHub Package Status](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-gpr.yml/badge.svg)](https://github.com/ProAngular/pro-form/actions/workflows/on-merge-main-deploy-gpr.yml)

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { FormDirective } from '../public/form.directive';
@@ -48,6 +49,7 @@ import {
     InputTimepickerComponent,
     InputToggleComponent,
     MatButtonModule,
+    MatIconModule,
     ReactiveFormsModule,
   ],
   standalone: true,
@@ -60,12 +62,15 @@ export class FormComponent extends FormDirective<FormGroupExample> {
 
     this.today = DateTime.local().startOf('day');
     this.thirtyDaysFromNow = this.today.plus({ months: 1 });
+
     this.toggleDisabledFormControl = new FormControl<boolean>(false);
+    this.toggleHideHintsFormControl = new FormControl<boolean>(false);
   }
 
   private readonly snackBar = inject(MatSnackBar);
 
   protected override readonly formGroup = formGroupExample;
+
   protected readonly chips = chips;
   protected readonly dropdownOptions = dropdownOptions;
   protected readonly groupedDropdownOptions = groupedDropdownOptions;
@@ -73,6 +78,7 @@ export class FormComponent extends FormDirective<FormGroupExample> {
   protected readonly thirtyDaysFromNow: DateTime;
   protected readonly today: DateTime;
   protected readonly toggleDisabledFormControl: FormControl<boolean | null>;
+  protected readonly toggleHideHintsFormControl: FormControl<boolean | null>;
   protected readonly validation = formGroupExampleValidation;
 
   protected prefillForm(): void {

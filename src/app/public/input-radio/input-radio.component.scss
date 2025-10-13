@@ -1,3 +1,8 @@
+::ng-deep pro-input-radio.hide-hint .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+  visibility: hidden;
+}
+
 mat-label {
   display: block;
 }

@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  numberAttribute,
+} from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -7,50 +12,29 @@ import { MatInputModule } from '@angular/material/input';
 import { InputDirective } from '../input.directive';
 import { InputAppearance, InputAutocomplete } from '../types';
 
-const rF = { required: false };
-
 @Component({
-  selector: 'pro-input-textarea',
+  selector: 'pro-input-textarea[label]',
   templateUrl: './input-textarea.component.html',
-  styleUrls: [],
-  standalone: true,
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
   ],
+  styleUrl: './input-textarea.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class InputTextareaComponent extends InputDirective<string> {
-  @Input(rF) public appearance: InputAppearance = 'outline';
-  @Input(rF) public autocomplete: InputAutocomplete = 'off';
-  @Input(rF) public name: string | undefined;
+  @Input() public appearance: InputAppearance = 'outline';
 
-  @Input(rF) public set maxLength(value: number | string) {
-    const maxLengthParsed = Number(value);
-    if (isNaN(maxLengthParsed)) {
-      this.#maxLength = undefined;
-      return;
-    }
-    this.#maxLength = maxLengthParsed;
-  }
-  public get maxLength(): number | undefined {
-    return this.#maxLength;
-  }
-  #maxLength: number | undefined;
+  @Input() public autocomplete: InputAutocomplete = 'off';
 
-  @Input(rF) public set minLength(value: number | string) {
-    const minLengthParsed = Number(value);
-    if (isNaN(minLengthParsed)) {
-      this.#minLength = undefined;
-      return;
-    }
+  @Input() public name: string | undefined;
 
-    this.#minLength = minLengthParsed;
-  }
-  public get minLength(): number | undefined {
-    return this.#minLength;
-  }
-  #minLength: number | undefined;
+  @Input({ transform: numberAttribute })
+  public maxLength: number | string | undefined;
+
+  @Input({ transform: numberAttribute })
+  public minLength: number | string | undefined;
 }

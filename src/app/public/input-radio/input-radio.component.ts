@@ -13,16 +13,16 @@ import { InputDirective } from '../input.directive';
 import { InputRadioOptionComponent } from './input-radio-option.component';
 
 @Component({
-  selector: 'pro-input-radio',
+  selector: 'pro-input-radio[label]',
   templateUrl: './input-radio.component.html',
-  styleUrls: ['./input-radio.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatRadioModule,
     ReactiveFormsModule,
   ],
+  styleUrl: './input-radio.component.scss',
+  changeDetection: ChangeDetectionStrategy.Default,
   standalone: true,
 })
 export class InputRadioComponent<T> extends InputDirective<T> {

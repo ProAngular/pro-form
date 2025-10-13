@@ -7,7 +7,7 @@ export { InputDatepickerComponent } from './input-datepicker/input-datepicker.co
 export { InputDropdownComponent } from './input-dropdown/input-dropdown.component';
 export { InputDropdownOptionComponent } from './input-dropdown/input-dropdown-option.component';
 export { InputDropdownOptionGroupComponent } from './input-dropdown/input-dropdown-option-group.component';
-export { InputLoadingComponent } from './input-loading/loading-input.component';
+export { InputLoadingComponent } from './input-loading/input-loading.component';
 export { InputRadioComponent } from './input-radio/input-radio.component';
 export { InputRadioOptionComponent } from './input-radio/input-radio-option.component';
 export { InputTextareaComponent } from './input-textarea/input-textarea.component';

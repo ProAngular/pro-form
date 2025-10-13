@@ -8,66 +8,156 @@ $margin: 0.5rem;
   margin: 2rem 0;
 }
 
-form {
+.form-section {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0;
+  flex-direction: row;
+  width: 100%;
 
-  pro-input,
-  pro-input-checkbox,
-  pro-input-chips,
-  pro-input-datepicker,
-  pro-input-dropdown,
-  pro-input-radio,
-  pro-input-timepicker,
-  pro-input-toggle,
-  pro-loading-input {
-    flex: 0 0 calc(50% - ($gap/ 2));
+  .form-container {
+    flex: 0 0 calc(75% - ($gap/ 2));
     margin: 0 $margin calc($margin * 2) $margin;
-    max-width: calc(50% - ($gap / 2));
+    max-width: calc(75% - ($gap / 2));
     width: 100%;
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0;
+      margin-bottom: 1rem;
+
+      pro-input,
+      pro-input-checkbox,
+      pro-input-chips,
+      pro-input-datepicker,
+      pro-input-dropdown,
+      pro-input-radio,
+      pro-input-timepicker,
+      pro-input-toggle,
+      pro-loading-input {
+        flex: 0 0 calc(50% - ($gap/ 2));
+        margin: 0 $margin calc($margin * 2) $margin;
+        max-width: calc(50% - ($gap / 2));
+        width: 100%;
+      }
+
+      pro-input-textarea {
+        flex: 0 0 calc(100% - ($gap/ 2));
+        margin: 0 $margin calc($margin * 2) $margin;
+        max-width: calc(100% - ($gap / 2));
+      }
+    }
+
+    .form-buttons > button {
+      margin-right: 0.5rem;
+    }
   }
 
-  pro-input-textarea {
-    flex: 0 0 calc(100% - ($gap/ 2));
+  .form-states {
+    flex: 0 0 calc(25% - ($gap/ 2));
     margin: 0 $margin calc($margin * 2) $margin;
-    max-width: calc(100% - ($gap / 2));
+    max-width: calc(25% - ($gap / 2));
+    width: 100%;
+    border-left: 1px solid var(--mat-sys-outline);
+    padding-left: 1rem;
+
+    .state {
+      display: flex;
+      margin-bottom: 0.25rem;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: nowrap;
+      flex-direction: row;
+
+      mat-icon:hover {
+        cursor: not-allowed;
+      }
+    }
   }
 }
 
-.actions > button {
-  margin-right: 0.5rem;
+hr {
+  margin-top: 2rem;
 }
 
 p {
   padding: 0.5rem;
 }
 
-form {
-  margin-bottom: 1rem;
+.extra-options {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+
+  .checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .toggle-fields-checkbox,
+    .toggle-hide-hints-checkbox {
+      display: block;
+      margin-right: 1rem;
+    }
+  }
 }
 
-.disable-fields-checkbox {
-  display: block;
-  margin: 0.5rem 1rem 0 0;
-}
-
-.form-values {
+.form-stats {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0;
 
-  > textarea {
-    flex: 0 0 calc(100% - ($gap/ 2));
+  $container-height: 320px;
+
+  .form-values {
+    flex: 0 0 calc(50% - ($gap/ 2));
     margin: 0 $margin calc($margin * 2) $margin;
-    max-width: calc(100% - ($gap / 2));
+    max-width: calc(50% - ($gap / 2));
+
+    textarea {
+      height: $container-height;
+      width: 100%;
+      border: 1px solid var(--mat-sys-outline);
+      font-size: 14px;
+    }
+  }
+
+  .form-errors {
+    flex: 0 0 calc(50% - ($gap/ 2));
+    margin: 0 $margin calc($margin * 2) $margin;
+    max-width: calc(50% - ($gap / 2));
+
+    .dl-container {
+      height: $container-height;
+      width: 100%;
+      overflow: auto;
+      border: 1px solid var(--mat-sys-outline);
+
+      dl {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 0;
+        font-size: 14px;
+
+        dt,
+        dd {
+          flex: 0 0 calc(50% - ($gap/ 2));
+          margin: 0;
+          max-width: calc(50% - ($gap / 2));
+        }
+      }
+    }
   }
 }
 
 @include breakpoints.media('max', 'md') {
-  :host form {
+  :host .form-section .form-container form {
     > pro-input,
     > pro-input-checkbox,
     > pro-input-chips,
@@ -78,6 +168,41 @@ form {
     > pro-input-timepicker,
     > pro-input-toggle,
     > pro-loading-input {
+      flex: 0 0 100%;
+      margin: 0 0 calc($margin * 2) 0;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  .form-section {
+    flex-direction: column;
+
+    .form-container,
+    .form-states {
+      margin-top: 1rem;
+      flex: 0 0 100%;
+      margin: 0 0 calc($margin * 2) 0;
+      max-width: 100%;
+      width: 100%;
+      padding: 0;
+      border-left: none;
+    }
+
+    .form-states {
+      border-top: 1px solid var(--mat-sys-outline);
+      padding-top: 1rem;
+      margin-top: 2rem;
+
+      .state {
+        padding-left: 1rem;
+      }
+    }
+  }
+
+  .form-stats {
+    .form-errors,
+    .form-values {
       flex: 0 0 100%;
       margin: 0 0 calc($margin * 2) 0;
       max-width: 100%;
