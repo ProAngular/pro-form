@@ -1,201 +1,277 @@
-<form [formGroup]="formGroup">
-  <!-- NAME -->
-  <pro-input
-    [formControl]="formGroup.controls.name"
-    [hideHint]="toggleHideHintsFormControl.value"
-    hint="This is a simple text input."
-    label="Name"
-    placeholder="Enter your name"
-  ></pro-input>
-  <!-- EMAIL -->
-  <pro-input
-    [formControl]="formGroup.controls.email"
-    [hideHint]="toggleHideHintsFormControl.value"
-    hint="This is an email input."
-    label="Email"
-    placeholder="Enter your email"
-    type="email"
-  ></pro-input>
-  <!-- PASSWORD -->
-  <pro-input
-    [formControl]="formGroup.controls.password"
-    [hideHint]="toggleHideHintsFormControl.value"
-    [hint]="
-      'A password with at least ' +
-      validation.password.minLength +
-      ' characters, but less than ' +
-      validation.password.maxLength +
-      '.'
-    "
-    label="Password"
-    placeholder="Enter a password"
-    type="password"
-  ></pro-input>
-  <!-- COUNT -->
-  <pro-input
-    [formControl]="formGroup.controls.count"
-    [hideHint]="toggleHideHintsFormControl.value"
-    hint="An optional number 0-100, with a step of 5."
-    label="Count (optional)"
-    placeholder="Enter an optional number"
-    step="5"
-    type="number"
-  ></pro-input>
-  <!-- REQUIRED CHECKBOX -->
-  <pro-input-checkbox
-    [formControl]="formGroup.controls.checkboxRequired"
-    label="Required checkbox"
-  ></pro-input-checkbox>
-  <!-- REQUIRED TOGGLE -->
-  <pro-input-toggle
-    [formControl]="formGroup.controls.toggleRequired"
-    label="Required toggle"
-  ></pro-input-toggle>
-  <!-- OPTIONAL CHECKBOX -->
-  <pro-input-checkbox
-    [formControl]="formGroup.controls.checkboxOptional"
-    label="Optional checkbox"
-  ></pro-input-checkbox>
-  <!-- OPTIONAL TOGGLE -->
-  <pro-input-toggle
-    [formControl]="formGroup.controls.toggleOptional"
-    label="Optional toggle"
-  ></pro-input-toggle>
-  <!-- DATE PICKER -->
-  <pro-input-datepicker
-    [formControl]="formGroup.controls.date"
-    [hideHint]="toggleHideHintsFormControl.value"
-    [max]="thirtyDaysFromNow"
-    [min]="today"
-    hint="From today to 30 days from now."
-    label="Date"
-    placeholder="Enter or select a date"
-  ></pro-input-datepicker>
-  <!-- TIME PICKER -->
-  <pro-input-timepicker
-    [formControl]="formGroup.controls.time"
-    [hideHint]="toggleHideHintsFormControl.value"
-    hint="A time between 8 AM and 8 PM CST."
-    interval="1hour"
-    label="Time"
-    placeholder="Enter or select a time"
-  ></pro-input-timepicker>
-  <!-- DROPDOWN - SINGLE -->
-  <pro-input-dropdown
-    [formControl]="formGroup.controls.dropdown"
-    [hideHint]="toggleHideHintsFormControl.value"
-    hint="A single-select dropdown."
-    label="Dropdown"
-    placeholder="Select an option"
-  >
-    @for (option of dropdownOptions; track option) {
-      <pro-input-dropdown-option [value]="option.value">{{
-        option.label
-      }}</pro-input-dropdown-option>
-    }
-    <pro-input-dropdown-option-group label="Grouped Options">
-      @for (option of groupedDropdownOptions; track option) {
-        <pro-input-dropdown-option [value]="option.value">{{
-          option.label
-        }}</pro-input-dropdown-option>
-      }
-    </pro-input-dropdown-option-group>
-    <pro-input-dropdown-option disabled [value]="1"
-      >Disabled Option</pro-input-dropdown-option
-    >
-  </pro-input-dropdown>
-  <!-- DROPDOWN - MULTIPLE -->
-  <pro-input-dropdown
-    [formControl]="formGroup.controls.dropdownMultiple"
-    [hideHint]="toggleHideHintsFormControl.value"
-    hint="A multi-select dropdown with a max of 2 selections."
-    label="Dropdown (Multiple)"
-    multiple
-    placeholder="Select multiple options"
-  >
-    @for (option of dropdownOptions; track option) {
-      <pro-input-dropdown-option [value]="option.value">{{
-        option.label
-      }}</pro-input-dropdown-option>
-    }
-    <pro-input-dropdown-option-group label="Grouped Options">
-      @for (option of groupedDropdownOptions; track option) {
-        <pro-input-dropdown-option [value]="option.value">{{
-          option.label
-        }}</pro-input-dropdown-option>
-      }
-    </pro-input-dropdown-option-group>
-    <pro-input-dropdown-option disabled [value]="1"
-      >Disabled Option</pro-input-dropdown-option
-    >
-  </pro-input-dropdown>
-  <!-- CHIPS -->
-  <pro-input-chips
-    [formControl]="formGroup.controls.chips"
-    [hideHint]="toggleHideHintsFormControl.value"
-    hint="A max of 3 chips."
-    label="Chips"
-    multiple
-  >
-    @for (chip of chips; track chip) {
-      <pro-input-chip [value]="chip">{{ chip }}</pro-input-chip>
-    }
-  </pro-input-chips>
-  <!-- OPTIONS RADIO -->
-  <pro-input-radio
-    [formControl]="formGroup.controls.optionsRadio"
-    label="Options"
-  >
-    @for (option of radioOptions; track option) {
-      <pro-input-radio-option [value]="option.value">{{
-        option.label
-      }}</pro-input-radio-option>
-    }
-  </pro-input-radio>
-  <!-- DESCRIPTION -->
-  <pro-input-textarea
-    [formControl]="formGroup.controls.description"
-    [hideHint]="toggleHideHintsFormControl.value"
-    [hint]="
-      ((formGroup.controls.description.valueChanges | async)?.length || 0) +
-      '/' +
-      validation.description.maxLength +
-      ' characters.'
-    "
-    label="Description"
-    placeholder="Enter a description"
-  ></pro-input-textarea>
-</form>
+<section class="form-section">
+  <div class="form-container">
+    <h4>Form Example</h4>
+    <form [formGroup]="formGroup">
+      <!-- NAME -->
+      <pro-input
+        [formControl]="formGroup.controls.name"
+        [hideHint]="toggleHideHintsFormControl.value"
+        hint="This is a simple text input."
+        label="Name"
+        placeholder="Enter your name"
+      ></pro-input>
+      <!-- EMAIL -->
+      <pro-input
+        [formControl]="formGroup.controls.email"
+        [hideHint]="toggleHideHintsFormControl.value"
+        hint="This is an email input."
+        label="Email"
+        placeholder="Enter your email"
+        type="email"
+      ></pro-input>
+      <!-- PASSWORD -->
+      <pro-input
+        [formControl]="formGroup.controls.password"
+        [hideHint]="toggleHideHintsFormControl.value"
+        [hint]="
+          'A password with at least ' +
+          validation.password.minLength +
+          ' characters, but less than ' +
+          validation.password.maxLength +
+          '.'
+        "
+        label="Password"
+        placeholder="Enter a password"
+        type="password"
+      ></pro-input>
+      <!-- COUNT -->
+      <pro-input
+        [formControl]="formGroup.controls.count"
+        [hideHint]="toggleHideHintsFormControl.value"
+        hint="An optional number 0-100, with a step of 5."
+        label="Count (optional)"
+        placeholder="Enter an optional number"
+        step="5"
+        type="number"
+      ></pro-input>
+      <!-- REQUIRED CHECKBOX -->
+      <pro-input-checkbox
+        [formControl]="formGroup.controls.checkboxRequired"
+        label="Required checkbox"
+      ></pro-input-checkbox>
+      <!-- REQUIRED TOGGLE -->
+      <pro-input-toggle
+        [formControl]="formGroup.controls.toggleRequired"
+        label="Required toggle"
+      ></pro-input-toggle>
+      <!-- OPTIONAL CHECKBOX -->
+      <pro-input-checkbox
+        [formControl]="formGroup.controls.checkboxOptional"
+        label="Optional checkbox"
+      ></pro-input-checkbox>
+      <!-- OPTIONAL TOGGLE -->
+      <pro-input-toggle
+        [formControl]="formGroup.controls.toggleOptional"
+        label="Optional toggle"
+      ></pro-input-toggle>
+      <!-- DATE PICKER -->
+      <pro-input-datepicker
+        [formControl]="formGroup.controls.date"
+        [hideHint]="toggleHideHintsFormControl.value"
+        [max]="thirtyDaysFromNow"
+        [min]="today"
+        hint="From today to 30 days from now."
+        label="Date"
+        placeholder="Enter or select a date"
+      ></pro-input-datepicker>
+      <!-- TIME PICKER -->
+      <pro-input-timepicker
+        [formControl]="formGroup.controls.time"
+        [hideHint]="toggleHideHintsFormControl.value"
+        hint="A time between 8 AM and 8 PM CST."
+        interval="1hour"
+        label="Time"
+        placeholder="Enter or select a time"
+      ></pro-input-timepicker>
+      <!-- DROPDOWN - SINGLE -->
+      <pro-input-dropdown
+        [formControl]="formGroup.controls.dropdown"
+        [hideHint]="toggleHideHintsFormControl.value"
+        hint="A single-select dropdown."
+        label="Dropdown"
+        placeholder="Select an option"
+      >
+        @for (option of dropdownOptions; track option) {
+          <pro-input-dropdown-option [value]="option.value">{{
+            option.label
+          }}</pro-input-dropdown-option>
+        }
+        <pro-input-dropdown-option-group label="Grouped Options">
+          @for (option of groupedDropdownOptions; track option) {
+            <pro-input-dropdown-option [value]="option.value">{{
+              option.label
+            }}</pro-input-dropdown-option>
+          }
+        </pro-input-dropdown-option-group>
+        <pro-input-dropdown-option disabled [value]="1"
+          >Disabled Option</pro-input-dropdown-option
+        >
+      </pro-input-dropdown>
+      <!-- DROPDOWN - MULTIPLE -->
+      <pro-input-dropdown
+        [formControl]="formGroup.controls.dropdownMultiple"
+        [hideHint]="toggleHideHintsFormControl.value"
+        hint="A multi-select dropdown with a max of 2 selections."
+        label="Dropdown (Multiple)"
+        multiple
+        placeholder="Select multiple options"
+      >
+        @for (option of dropdownOptions; track option) {
+          <pro-input-dropdown-option [value]="option.value">{{
+            option.label
+          }}</pro-input-dropdown-option>
+        }
+        <pro-input-dropdown-option-group label="Grouped Options">
+          @for (option of groupedDropdownOptions; track option) {
+            <pro-input-dropdown-option [value]="option.value">{{
+              option.label
+            }}</pro-input-dropdown-option>
+          }
+        </pro-input-dropdown-option-group>
+        <pro-input-dropdown-option disabled [value]="1"
+          >Disabled Option</pro-input-dropdown-option
+        >
+      </pro-input-dropdown>
+      <!-- CHIPS -->
+      <pro-input-chips
+        [formControl]="formGroup.controls.chips"
+        [hideHint]="toggleHideHintsFormControl.value"
+        hint="A max of 3 chips."
+        label="Chips"
+        multiple
+      >
+        @for (chip of chips; track chip) {
+          <pro-input-chip [value]="chip">{{ chip }}</pro-input-chip>
+        }
+      </pro-input-chips>
+      <!-- OPTIONS RADIO -->
+      <pro-input-radio
+        [formControl]="formGroup.controls.optionsRadio"
+        label="Options"
+      >
+        @for (option of radioOptions; track option) {
+          <pro-input-radio-option [value]="option.value">{{
+            option.label
+          }}</pro-input-radio-option>
+        }
+      </pro-input-radio>
+      <!-- DESCRIPTION -->
+      <pro-input-textarea
+        [formControl]="formGroup.controls.description"
+        [hideHint]="toggleHideHintsFormControl.value"
+        [hint]="
+          ((formGroup.controls.description.valueChanges | async)?.length || 0) +
+          '/' +
+          validation.description.maxLength +
+          ' characters.'
+        "
+        label="Description"
+        placeholder="Enter a description"
+      ></pro-input-textarea>
+    </form>
+    <div class="form-buttons">
+      <button
+        (click)="reset()"
+        [disabled]="
+          (formGroup.pristine && formGroup.untouched) || formGroup.disabled
+        "
+        label="Reset"
+        mat-stroked-button
+      >
+        Reset
+      </button>
+      <button
+        (click)="prefillForm()"
+        [disabled]="formGroup.disabled"
+        label="Fill"
+        mat-flat-button
+      >
+        Fill
+      </button>
+      <button
+        (click)="submit()"
+        [disabled]="formGroup.disabled"
+        label="Submit"
+        mat-flat-button
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+  <div class="form-states">
+    <h4>Form State</h4>
+    <ng-container
+      [ngTemplateOutlet]="stateTemplate"
+      [ngTemplateOutletContext]="{
+        isChecked: formGroup.dirty,
+        label: 'Dirty',
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="stateTemplate"
+      [ngTemplateOutletContext]="{
+        isChecked: formGroup.disabled,
+        label: 'Disabled',
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="stateTemplate"
+      [ngTemplateOutletContext]="{
+        isChecked: formGroup.enabled,
+        label: 'Enabled',
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="stateTemplate"
+      [ngTemplateOutletContext]="{
+        isChecked: formGroup.invalid,
+        label: 'Invalid',
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="stateTemplate"
+      [ngTemplateOutletContext]="{
+        isChecked: formGroup.pending,
+        label: 'Pending',
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="stateTemplate"
+      [ngTemplateOutletContext]="{
+        isChecked: formGroup.pristine,
+        label: 'Pristine',
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="stateTemplate"
+      [ngTemplateOutletContext]="{
+        isChecked: formGroup.touched,
+        label: 'Touched',
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="stateTemplate"
+      [ngTemplateOutletContext]="{
+        isChecked: formGroup.untouched,
+        label: 'Untouched',
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="stateTemplate"
+      [ngTemplateOutletContext]="{
+        isChecked: formGroup.valid,
+        label: 'Valid',
+      }"
+    ></ng-container>
+  </div>
+</section>
 
-<div class="actions">
-  <button
-    (click)="reset()"
-    [disabled]="
-      (formGroup.pristine && formGroup.untouched) || formGroup.disabled
-    "
-    label="Reset"
-    mat-stroked-button
-  >
-    Reset
-  </button>
-  <button
-    (click)="prefillForm()"
-    [disabled]="formGroup.disabled"
-    label="Fill"
-    mat-flat-button
-  >
-    Fill
-  </button>
-  <button
-    (click)="submit()"
-    [disabled]="formGroup.disabled"
-    label="Submit"
-    mat-flat-button
-    type="submit"
-  >
-    Submit
-  </button>
-  <div class="checkbox-options">
+<hr />
+
+<section class="extra-options">
+  <h4>Options</h4>
+  <div class="checkbox-container">
     <pro-input-checkbox
       (change)="toggleDisabled($event)"
       [formControl]="toggleDisabledFormControl"
@@ -208,15 +284,40 @@
       label="Hide Hints"
     ></pro-input-checkbox>
   </div>
-</div>
+</section>
 
 <hr />
 
-<div class="form-values">
-  <h4>Form Values</h4>
-  <textarea
-    rows="15"
-    class="form-value-display"
-    [innerHTML]="pretifyJson(formGroup.value)"
-  ></textarea>
-</div>
+<section class="form-stats">
+  <div class="form-values">
+    <h4>Form Value</h4>
+    <textarea [innerHTML]="pretifyJson(formGroup.value)"></textarea>
+  </div>
+  <div class="form-errors">
+    <h4>Form Errors</h4>
+    <div class="dl-container">
+      <dl>
+        @for (control of formGroup.controls | keyvalue; track control.key) {
+          @if (control.value.errors) {
+            <dt>{{ control.key }}:</dt>
+            <dd [innerHTML]="pretifyJson(control.value.errors)"></dd>
+          } @else {
+            <dt>{{ control.key }}:</dt>
+            <dd>&lcub;&rcub;</dd>
+          }
+        }
+      </dl>
+    </div>
+  </div>
+</section>
+
+<ng-template #stateTemplate let-isChecked="isChecked" let-label="label">
+  <div class="state">
+    <mat-icon
+      [fontIcon]="isChecked ? 'check_box' : 'check_box_outline_blank'"
+      aria-hidden="false"
+    ></mat-icon
+    >&nbsp;
+    <span>{{ label }}</span>
+  </div>
+</ng-template>

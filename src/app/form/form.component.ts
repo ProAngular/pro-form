@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { FormDirective } from '../public/form.directive';
@@ -48,6 +49,7 @@ import {
     InputTimepickerComponent,
     InputToggleComponent,
     MatButtonModule,
+    MatIconModule,
     ReactiveFormsModule,
   ],
   standalone: true,
