@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'pro-input-radio-option',
+  selector: 'pro-input-radio-option[value]',
   template: `<ng-content></ng-content>`,
   changeDetection: ChangeDetectionStrategy.Default,
   standalone: true,

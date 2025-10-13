@@ -8,18 +8,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 
-import { InputLoadingComponent } from '../input-loading/loading-input.component';
+import { InputLoadingComponent } from '../input-loading/input-loading.component';
 import { InputDirective } from '../input.directive';
 import { DateTimePipe } from '../pipes';
 import { InputAppearance } from '../types';
 
-const rF = { required: false };
-
 @Component({
-  selector: 'pro-input-timepicker',
+  selector: 'pro-input-timepicker[label]',
   templateUrl: './input-timepicker.component.html',
-  styleUrls: [],
-  standalone: true,
   imports: [
     CommonModule,
     DateTimePipe,
@@ -30,11 +26,16 @@ const rF = { required: false };
     ReactiveFormsModule,
   ],
   providers: [provideLuxonDateAdapter()],
+  styleUrl: './input-timepicker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class InputTimepickerComponent extends InputDirective<DateTime> {
-  @Input(rF) public appearance: InputAppearance = 'outline';
-  @Input(rF) public interval: string | number | null = null;
-  @Input(rF) public max: DateTime | undefined;
-  @Input(rF) public min: DateTime | undefined;
+  @Input() public appearance: InputAppearance = 'outline';
+
+  @Input() public interval: string | number | null = null;
+
+  @Input() public max: DateTime | undefined;
+
+  @Input() public min: DateTime | undefined;
 }

@@ -2,6 +2,7 @@
   <!-- NAME -->
   <pro-input
     [formControl]="formGroup.controls.name"
+    [hideHint]="toggleHideHintsFormControl.value"
     hint="This is a simple text input."
     label="Name"
     placeholder="Enter your name"
@@ -9,6 +10,7 @@
   <!-- EMAIL -->
   <pro-input
     [formControl]="formGroup.controls.email"
+    [hideHint]="toggleHideHintsFormControl.value"
     hint="This is an email input."
     label="Email"
     placeholder="Enter your email"
@@ -17,6 +19,7 @@
   <!-- PASSWORD -->
   <pro-input
     [formControl]="formGroup.controls.password"
+    [hideHint]="toggleHideHintsFormControl.value"
     [hint]="
       'A password with at least ' +
       validation.password.minLength +
@@ -31,6 +34,7 @@
   <!-- COUNT -->
   <pro-input
     [formControl]="formGroup.controls.count"
+    [hideHint]="toggleHideHintsFormControl.value"
     hint="An optional number 0-100, with a step of 5."
     label="Count (optional)"
     placeholder="Enter an optional number"
@@ -60,23 +64,26 @@
   <!-- DATE PICKER -->
   <pro-input-datepicker
     [formControl]="formGroup.controls.date"
-    [min]="today"
+    [hideHint]="toggleHideHintsFormControl.value"
     [max]="thirtyDaysFromNow"
+    [min]="today"
+    hint="From today to 30 days from now."
     label="Date"
     placeholder="Enter or select a date"
-    hint="From today to 30 days from now."
   ></pro-input-datepicker>
   <!-- TIME PICKER -->
   <pro-input-timepicker
     [formControl]="formGroup.controls.time"
+    [hideHint]="toggleHideHintsFormControl.value"
+    hint="A time between 8 AM and 8 PM CST."
     interval="1hour"
     label="Time"
     placeholder="Enter or select a time"
-    hint="A time between 8 AM and 8 PM CST."
   ></pro-input-timepicker>
   <!-- DROPDOWN - SINGLE -->
   <pro-input-dropdown
     [formControl]="formGroup.controls.dropdown"
+    [hideHint]="toggleHideHintsFormControl.value"
     hint="A single-select dropdown."
     label="Dropdown"
     placeholder="Select an option"
@@ -100,6 +107,7 @@
   <!-- DROPDOWN - MULTIPLE -->
   <pro-input-dropdown
     [formControl]="formGroup.controls.dropdownMultiple"
+    [hideHint]="toggleHideHintsFormControl.value"
     hint="A multi-select dropdown with a max of 2 selections."
     label="Dropdown (Multiple)"
     multiple
@@ -124,6 +132,7 @@
   <!-- CHIPS -->
   <pro-input-chips
     [formControl]="formGroup.controls.chips"
+    [hideHint]="toggleHideHintsFormControl.value"
     hint="A max of 3 chips."
     label="Chips"
     multiple
@@ -146,6 +155,7 @@
   <!-- DESCRIPTION -->
   <pro-input-textarea
     [formControl]="formGroup.controls.description"
+    [hideHint]="toggleHideHintsFormControl.value"
     [hint]="
       ((formGroup.controls.description.valueChanges | async)?.length || 0) +
       '/' +
@@ -185,12 +195,19 @@
   >
     Submit
   </button>
-  <pro-input-checkbox
-    (change)="toggleDisabled($event)"
-    [formControl]="toggleDisabledFormControl"
-    class="disable-fields-checkbox"
-    label="Disable Fields"
-  ></pro-input-checkbox>
+  <div class="checkbox-options">
+    <pro-input-checkbox
+      (change)="toggleDisabled($event)"
+      [formControl]="toggleDisabledFormControl"
+      class="toggle-fields-checkbox"
+      label="Disable Fields"
+    ></pro-input-checkbox>
+    <pro-input-checkbox
+      [formControl]="toggleHideHintsFormControl"
+      class="toggle-hide-hints-checkbox"
+      label="Hide Hints"
+    ></pro-input-checkbox>
+  </div>
 </div>
 
 <hr />

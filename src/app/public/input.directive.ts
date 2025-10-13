@@ -1,7 +1,9 @@
 import {
   Directive,
   ElementRef,
+  HostBinding,
   Input,
+  booleanAttribute,
   forwardRef,
   inject,
 } from '@angular/core';
@@ -14,7 +16,6 @@ import {
 } from '@angular/forms';
 
 let id = 0;
-const rF = { required: false };
 
 @Directive({
   providers: [
@@ -33,6 +34,7 @@ export abstract class InputDirective<T> implements ControlValueAccessor {
   }
 
   public elementRef = inject(ElementRef);
+
   public ngControl = inject(NgControl, { self: true, optional: true });
 
   public get formControl(): FormControl<T> {
@@ -43,9 +45,16 @@ export abstract class InputDirective<T> implements ControlValueAccessor {
     return this.ngControl.control as FormControl<T>;
   }
 
-  @Input(rF) public hint: string | number | null = null;
-  @Input(rF) public id = `pro-input-${++id}`;
-  @Input(rF) public placeholder: string | null = null;
+  @HostBinding('class.hide-hint')
+  @Input({ transform: booleanAttribute })
+  public hideHint = false;
+
+  @Input() public hint: string | number | null = null;
+
+  @Input() public id = `pro-input-${++id}`;
+
+  @Input() public placeholder: string | null = null;
+
   @Input({ required: true }) public label!: string;
 
   public get isRequired(): boolean {
@@ -53,7 +62,9 @@ export abstract class InputDirective<T> implements ControlValueAccessor {
   }
 
   public onChange: (value: T) => void = () => undefined;
+
   public onTouched: () => void = () => undefined;
+
   public writeValue: (value: T) => void = () => undefined;
 
   public registerOnChange(fn: (value: T) => void): void {
@@ -64,7 +75,7 @@ export abstract class InputDirective<T> implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  public scrollIntoView(options?: ScrollIntoViewOptions): void {
+  public scrollIntoView(options: ScrollIntoViewOptions | undefined): void {
     const defaultOptions: ScrollIntoViewOptions = { behavior: 'smooth' };
     this.elementRef.nativeElement.scrollIntoView({
       ...defaultOptions,

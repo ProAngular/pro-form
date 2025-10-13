@@ -9,7 +9,7 @@ import {
 import { InputDropdownOptionComponent } from './input-dropdown-option.component';
 
 @Component({
-  selector: 'pro-input-dropdown-option-group',
+  selector: 'pro-input-dropdown-option-group[label]',
   template: `<ng-content></ng-content>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

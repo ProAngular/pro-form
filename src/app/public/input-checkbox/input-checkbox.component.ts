@@ -16,14 +16,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { InputDirective } from '../input.directive';
 
-const rF = { required: false };
-
 @UntilDestroy()
 @Component({
-  selector: 'pro-input-checkbox',
+  selector: 'pro-input-checkbox[label]',
   templateUrl: './input-checkbox.component.html',
-  styleUrls: ['./input-checkbox.component.scss'],
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -31,13 +27,15 @@ const rF = { required: false };
     MatFormFieldModule,
     ReactiveFormsModule,
   ],
+  styleUrl: './input-checkbox.component.scss',
   changeDetection: ChangeDetectionStrategy.Default,
+  standalone: true,
 })
 export class InputCheckboxComponent
   extends InputDirective<boolean | null>
   implements OnInit
 {
-  @Input(rF)
+  @Input()
   public labelPosition: 'before' | 'after' = 'after';
 
   // eslint-disable-next-line @angular-eslint/no-output-native

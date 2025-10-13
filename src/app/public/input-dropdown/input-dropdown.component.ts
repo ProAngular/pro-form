@@ -1,4 +1,3 @@
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -7,6 +6,8 @@ import {
   Input,
   QueryList,
   ViewChild,
+  booleanAttribute,
+  numberAttribute,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,20 +17,15 @@ import {
   MatSelectModule,
 } from '@angular/material/select';
 
-import { InputLoadingComponent } from '../input-loading/loading-input.component';
+import { InputLoadingComponent } from '../input-loading/input-loading.component';
 import { InputDirective } from '../input.directive';
 import { InputAppearance } from '../types';
 import { InputDropdownOptionGroupComponent } from './input-dropdown-option-group.component';
 import { InputDropdownOptionComponent } from './input-dropdown-option.component';
 
-const rF = { required: false };
-const rFc = { required: false, transform: coerceBooleanProperty };
-
 @Component({
-  selector: 'pro-input-dropdown',
+  selector: 'pro-input-dropdown[label]',
   templateUrl: './input-dropdown.component.html',
-  styleUrl: './input-dropdown.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     FormsModule,
@@ -38,9 +34,19 @@ const rFc = { required: false, transform: coerceBooleanProperty };
     MatSelectModule,
     ReactiveFormsModule,
   ],
+  styleUrl: './input-dropdown.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class InputDropdownComponent<T> extends InputDirective<T> {
+  @Input() public appearance: InputAppearance = 'outline';
+
+  @Input({ transform: numberAttribute })
+  public max: number | string | undefined;
+
+  @Input({ transform: booleanAttribute })
+  public multiple = false;
+
   @ContentChildren(InputDropdownOptionComponent)
   public readonly options: QueryList<InputDropdownOptionComponent> =
     new QueryList<InputDropdownOptionComponent>();
@@ -50,15 +56,6 @@ export class InputDropdownComponent<T> extends InputDirective<T> {
     new QueryList<InputDropdownOptionGroupComponent>();
 
   @ViewChild(MatSelect) public readonly matSelect?: MatSelect;
-
-  @Input(rF)
-  public appearance: InputAppearance = 'outline';
-
-  @Input() public max: number | undefined;
-
-  private get exceedsMax(): boolean {
-    return this.max !== undefined && this.selectedOptions.length > this.max;
-  }
 
   protected get selectedOptions(): readonly InputDropdownOptionComponent[] {
     if (!this.matSelect) {
@@ -95,9 +92,7 @@ export class InputDropdownComponent<T> extends InputDirective<T> {
     return [];
   }
 
-  @Input(rFc) public multiple = false;
-
-  @Input(rF) public compareWith: MatSelect['compareWith'] = (
+  @Input() public compareWith: MatSelect['compareWith'] = (
     optionValue,
     selectedValue,
   ) => {

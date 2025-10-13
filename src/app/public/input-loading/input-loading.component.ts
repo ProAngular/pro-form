@@ -2,41 +2,47 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { interval } from 'rxjs';
 
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  OnInit,
+  booleanAttribute,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { InputAppearance } from '../types';
 
-const rF = { required: false };
-
 @UntilDestroy()
 @Component({
   selector: 'pro-input-loading',
-  template: `
-    <mat-form-field [appearance]="appearance">
-      <input [formControl]="formControl" matInput type="text" />
-      @if (hint) {
-        <mat-hint [title]="hint">{{ hint }}</mat-hint>
-      }
-    </mat-form-field>
-  `,
-  styles: [':host { width: 100%; }'],
+  templateUrl: './input-loading.component.html',
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
   ],
+  styleUrl: './input-loading.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class InputLoadingComponent implements OnInit {
-  @Input(rF) public appearance: InputAppearance = 'outline';
-  @Input(rF) public hint?: string;
-  @Input(rF) public label?: string;
+  @Input() public appearance: InputAppearance = 'outline';
+
+  @HostBinding('class.hide-hint')
+  @Input({ transform: booleanAttribute })
+  public hideHint = false;
+
+  @Input() public hint: string | undefined;
+
+  @Input() public label: string | undefined;
 
   protected readonly formControl = new FormControl<string | null>(null);
+
   protected loadingText = 'Loading';
 
   public ngOnInit(): void {

@@ -11,7 +11,9 @@
     />
     <mat-timepicker-toggle [for]="timepicker" matSuffix />
     <mat-timepicker #timepicker [interval]="interval" />
-    <mat-hint [title]="hint">{{ hint }}</mat-hint>
+    @if (!hideHint) {
+      <mat-hint [title]="hint">{{ hint }}</mat-hint>
+    }
     @if (formControl.invalid && formControl.touched) {
       <mat-error>
         @if (formControl.hasError('required')) {

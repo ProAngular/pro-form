@@ -48,9 +48,16 @@ form {
   margin-bottom: 1rem;
 }
 
-.disable-fields-checkbox {
-  display: block;
-  margin: 0.5rem 1rem 0 0;
+div.checkbox-options {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  .toggle-fields-checkbox,
+  .toggle-hide-hints-checkbox {
+    display: block;
+    margin: 0.5rem 1rem 0 0;
+  }
 }
 
 .form-values {

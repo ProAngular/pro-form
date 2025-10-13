@@ -17,10 +17,8 @@ import { InputDirective } from '../input.directive';
 
 @UntilDestroy()
 @Component({
-  selector: 'pro-input-toggle',
+  selector: 'pro-input-toggle[label]',
   templateUrl: './input-toggle.component.html',
-  styleUrls: ['./input-toggle.component.scss'],
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -28,7 +26,9 @@ import { InputDirective } from '../input.directive';
     MatSlideToggleModule,
     ReactiveFormsModule,
   ],
+  styleUrl: './input-toggle.component.scss',
   changeDetection: ChangeDetectionStrategy.Default,
+  standalone: true,
 })
 export class InputToggleComponent
   extends InputDirective<boolean | null>
