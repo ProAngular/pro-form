@@ -65,7 +65,9 @@
   <code>ng add @proangular/pro-form</code>
 </p>
 <p align="center">
-  <img src=".github/images/screenshots/screenshot.png" />
+  <img 
+    src="https://raw.githubusercontent.com/ProAngular/pro-form/refs/heads/main/.github/images/screenshots/screenshot.png"
+  />
 </p>
 <p align="center">
   <a href="https://www.ProAngular.com/demos/pro-form" target="_blank">Click here to preview it live!</a>
