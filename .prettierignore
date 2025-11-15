@@ -11,8 +11,8 @@ public/
 !eslint.config.js
 !package.json
 !src/
-!src/app/
-!src/app/public/
+!src/**
+!src/**/*
 
 # Re-ignore sub-directories from the above exempt directories:
 .github/CODEOWNERS
