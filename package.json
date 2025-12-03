@@ -25,14 +25,14 @@
   },
   "peerDependencies": {
     "@angular/animations": "21.0.2",
-    "@angular/cdk": ">=20 <21",
+    "@angular/cdk": "21.0.1",
     "@angular/common": "21.0.2",
     "@angular/core": "21.0.2",
     "@angular/forms": "21.0.2",
-    "@angular/material": ">=20 <21",
-    "@angular/material-luxon-adapter": ">=20 <21",
+    "@angular/material": "21.0.1",
+    "@angular/material-luxon-adapter": "21.0.1",
     "@ngneat/until-destroy": ">=10 <11",
-    "luxon": ">=3 <4",
+    "luxon": "3.7.2",
     "rxjs": ">=7.8 <8",
     "zone.js": ">=0.15 <0.16"
   },
