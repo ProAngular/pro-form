@@ -17,9 +17,9 @@ import { InputToggleComponent } from './input-toggle/input-toggle.component';
 import { InputComponent } from './input/input.component';
 
 @Directive()
-export class FormDirective<T extends { [K in keyof T]: AbstractControl }>
-  implements AfterViewInit
-{
+export class FormDirective<
+  T extends { [K in keyof T]: AbstractControl },
+> implements AfterViewInit {
   protected readonly formGroup!: FormGroup<T>;
 
   @ViewChildren(InputComponent)
