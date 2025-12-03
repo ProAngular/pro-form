@@ -1,6 +1,6 @@
 {
   "name": "@proangular/pro-form",
-  "version": "20.3.1",
+  "version": "21.0.0",
   "description": "A predefined set of reactive and reusable form input components based on Angular Material.",
   "author": "Pro Angular <webmaster@proangular.com>",
   "homepage": "https://www.proangular.com",
