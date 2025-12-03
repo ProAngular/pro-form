@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,7 +16,6 @@ import { InputAppearance, InputAutocomplete, InputType } from '../types';
   selector: 'pro-input[label]',
   templateUrl: './input.component.html',
   imports: [
-    CommonModule,
     InputLoadingComponent,
     MatFormFieldModule,
     MatInputModule,

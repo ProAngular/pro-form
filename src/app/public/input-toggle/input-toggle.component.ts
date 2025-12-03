@@ -1,7 +1,6 @@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { startWith } from 'rxjs';
 
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,7 +19,6 @@ import { InputDirective } from '../input.directive';
   selector: 'pro-input-toggle[label]',
   templateUrl: './input-toggle.component.html',
   imports: [
-    CommonModule,
     FormsModule,
     MatFormFieldModule,
     MatSlideToggleModule,

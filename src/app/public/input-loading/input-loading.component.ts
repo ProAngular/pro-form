@@ -1,7 +1,6 @@
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { interval } from 'rxjs';
 
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,12 +19,7 @@ import { InputAppearance } from '../types';
 @Component({
   selector: 'pro-input-loading',
   templateUrl: './input-loading.component.html',
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-  ],
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   styleUrl: './input-loading.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

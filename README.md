@@ -270,6 +270,7 @@ application where used:
 
 | Angular version | @proangular/pro-form | Install                         |
 | --------------- | -------------------- | ------------------------------- |
+| v21             | v21.x.x              | ng add @proangular/pro-form@^21 |
 | v20             | v20.x.x              | ng add @proangular/pro-form@^20 |
 | v19             | v19.x.x              | ng add @proangular/pro-form@^19 |
 | v18             | ------               | Untested                        |
