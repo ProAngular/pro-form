@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,12 +14,7 @@ import { InputAppearance, InputAutocomplete } from '../types';
 @Component({
   selector: 'pro-input-textarea[label]',
   templateUrl: './input-textarea.component.html',
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-  ],
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   styleUrl: './input-textarea.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

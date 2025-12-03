@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,7 +19,6 @@ import { InputChipComponent } from './input-chip.component';
   selector: 'pro-input-chips[label]',
   templateUrl: './input-chips.component.html',
   imports: [
-    CommonModule,
     FormsModule,
     MatChipsModule,
     MatFormFieldModule,

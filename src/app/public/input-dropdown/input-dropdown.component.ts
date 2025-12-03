@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -27,7 +26,6 @@ import { InputDropdownOptionComponent } from './input-dropdown-option.component'
   selector: 'pro-input-dropdown[label]',
   templateUrl: './input-dropdown.component.html',
   imports: [
-    CommonModule,
     FormsModule,
     InputLoadingComponent,
     MatFormFieldModule,

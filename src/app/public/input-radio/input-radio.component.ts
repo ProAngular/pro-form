@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,12 +14,7 @@ import { InputRadioOptionComponent } from './input-radio-option.component';
 @Component({
   selector: 'pro-input-radio[label]',
   templateUrl: './input-radio.component.html',
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatRadioModule,
-    ReactiveFormsModule,
-  ],
+  imports: [MatFormFieldModule, MatRadioModule, ReactiveFormsModule],
   styleUrl: './input-radio.component.scss',
   changeDetection: ChangeDetectionStrategy.Default,
   standalone: true,
