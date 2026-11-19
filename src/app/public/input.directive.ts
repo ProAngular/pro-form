@@ -1,11 +1,12 @@
 import {
+  ChangeDetectorRef,
   Directive,
+  DoCheck,
   ElementRef,
-  HostBinding,
-  Input,
   booleanAttribute,
   forwardRef,
   inject,
+  input,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -18,6 +19,9 @@ import {
 let id = 0;
 
 @Directive({
+  host: {
+    '[class.hide-hint]': 'hideHint()',
+  },
   providers: [
     {
       multi: true,
@@ -26,16 +30,34 @@ let id = 0;
     },
   ],
 })
-export abstract class InputDirective<T> implements ControlValueAccessor {
+export abstract class InputDirective<T>
+  implements ControlValueAccessor, DoCheck
+{
   public constructor() {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
   }
 
-  public elementRef = inject(ElementRef);
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
-  public ngControl = inject(NgControl, { self: true, optional: true });
+  private lastStatus: string | null = null;
+
+  private lastTouched: boolean | null = null;
+
+  public readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  public readonly ngControl = inject(NgControl, { self: true, optional: true });
+
+  public readonly hideHint = input(false, { transform: booleanAttribute });
+
+  public readonly hint = input<string | number | null>(null);
+
+  public readonly id = input(`pro-input-${++id}`);
+
+  public readonly placeholder = input<string | null>(null);
+
+  public readonly label = input.required<string>();
 
   public get formControl(): FormControl<T> {
     if (!this.ngControl) {
@@ -44,18 +66,6 @@ export abstract class InputDirective<T> implements ControlValueAccessor {
 
     return this.ngControl.control as FormControl<T>;
   }
-
-  @HostBinding('class.hide-hint')
-  @Input({ transform: booleanAttribute })
-  public hideHint = false;
-
-  @Input() public hint: string | number | null = null;
-
-  @Input() public id = `pro-input-${++id}`;
-
-  @Input() public placeholder: string | null = null;
-
-  @Input({ required: true }) public label!: string;
 
   public get isRequired(): boolean {
     return this.formControl.hasValidator(Validators.required);
@@ -66,6 +76,27 @@ export abstract class InputDirective<T> implements ControlValueAccessor {
   public onTouched: () => void = () => undefined;
 
   public writeValue: (value: T) => void = () => undefined;
+
+  /**
+   * Touched and status changes made from outside the template (for example
+   * `markAsTouched()` from a parent) don't notify signals, so mark the view for
+   * check when either one changes.
+   */
+  public ngDoCheck(): void {
+    const control = this.ngControl?.control;
+    if (!control) {
+      return;
+    }
+
+    if (
+      control.touched !== this.lastTouched ||
+      control.status !== this.lastStatus
+    ) {
+      this.lastTouched = control.touched;
+      this.lastStatus = control.status;
+      this.changeDetectorRef.markForCheck();
+    }
+  }
 
   public registerOnChange(fn: (value: T) => void): void {
     this.onChange = fn;

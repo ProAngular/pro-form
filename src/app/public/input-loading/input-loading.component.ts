@@ -1,39 +1,39 @@
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { interval } from 'rxjs';
 
 import {
-  ChangeDetectionStrategy,
   Component,
-  HostBinding,
-  Input,
+  DestroyRef,
   OnInit,
   booleanAttribute,
+  inject,
+  input,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { InputAppearance } from '../types';
 
-@UntilDestroy()
 @Component({
   selector: 'pro-input-loading',
   templateUrl: './input-loading.component.html',
   imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   styleUrl: './input-loading.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
+  host: {
+    '[class.hide-hint]': 'hideHint()',
+  },
 })
 export class InputLoadingComponent implements OnInit {
-  @Input() public appearance: InputAppearance = 'outline';
+  private readonly destroyRef = inject(DestroyRef);
 
-  @HostBinding('class.hide-hint')
-  @Input({ transform: booleanAttribute })
-  public hideHint = false;
+  public readonly appearance = input<InputAppearance>('outline');
 
-  @Input() public hint: string | undefined;
+  public readonly hideHint = input(false, { transform: booleanAttribute });
 
-  @Input() public label: string | undefined;
+  public readonly hint = input<string | undefined>();
+
+  public readonly label = input<string | undefined>();
 
   protected readonly formControl = new FormControl<string | null>(null);
 
@@ -43,14 +43,13 @@ export class InputLoadingComponent implements OnInit {
     this.formControl.disable();
 
     interval(500)
-      .pipe(untilDestroyed(this))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => {
+        const label = this.label();
         if (this.loadingText === 'Loading') {
-          this.loadingText = this.label
-            ? `Loading "${this.label}".`
-            : 'Loading.';
+          this.loadingText = label ? `Loading "${label}".` : 'Loading.';
         } else if (this.loadingText.endsWith('...')) {
-          this.loadingText = this.label ? `Loading "${this.label}"` : 'Loading';
+          this.loadingText = label ? `Loading "${label}"` : 'Loading';
         } else {
           this.loadingText = this.loadingText + '.';
         }

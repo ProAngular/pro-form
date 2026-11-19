@@ -1,21 +1,20 @@
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { startWith } from 'rxjs';
 
 import {
-  ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  Input,
+  DestroyRef,
   OnInit,
-  Output,
+  inject,
+  input,
+  output,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { InputDirective } from '../input.directive';
 
-@UntilDestroy()
 @Component({
   selector: 'pro-input-checkbox[label]',
   templateUrl: './input-checkbox.component.html',
@@ -26,22 +25,24 @@ import { InputDirective } from '../input.directive';
     ReactiveFormsModule,
   ],
   styleUrl: './input-checkbox.component.scss',
-  changeDetection: ChangeDetectionStrategy.Default,
-  standalone: true,
 })
 export class InputCheckboxComponent
   extends InputDirective<boolean | null>
   implements OnInit
 {
-  @Input()
-  public labelPosition: 'before' | 'after' = 'after';
+  private readonly destroyRef = inject(DestroyRef);
+
+  public readonly labelPosition = input<'before' | 'after'>('after');
 
   // eslint-disable-next-line @angular-eslint/no-output-native
-  @Output() public readonly change = new EventEmitter<boolean>();
+  public readonly change = output<boolean>();
 
   public ngOnInit(): void {
     this.formControl.valueChanges
-      .pipe(startWith(this.formControl.value), untilDestroyed(this))
+      .pipe(
+        startWith(this.formControl.value),
+        takeUntilDestroyed(this.destroyRef),
+      )
       .subscribe((isChecked) => {
         if (this.formControl.disabled) {
           return;

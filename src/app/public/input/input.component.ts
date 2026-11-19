@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  numberAttribute,
-} from '@angular/core';
+import { Component, input, numberAttribute } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,30 +17,36 @@ import { InputAppearance, InputAutocomplete, InputType } from '../types';
     ReactiveFormsModule,
   ],
   styleUrl: './input.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class InputComponent extends InputDirective<string> {
-  @Input() public appearance: InputAppearance = 'outline';
+  public readonly appearance = input<InputAppearance>('outline');
 
-  @Input() public autocomplete: InputAutocomplete = 'off';
+  public readonly autocomplete = input<InputAutocomplete>('off');
 
-  @Input({ transform: numberAttribute })
-  public max: number | string | undefined;
+  public readonly max = input<number | string | undefined, unknown>(undefined, {
+    transform: numberAttribute,
+  });
 
-  @Input({ transform: numberAttribute })
-  public min: number | string | undefined;
+  public readonly min = input<number | string | undefined, unknown>(undefined, {
+    transform: numberAttribute,
+  });
 
-  @Input({ transform: numberAttribute })
-  public maxLength: number | string | undefined;
+  public readonly maxLength = input<number | string | undefined, unknown>(
+    undefined,
+    { transform: numberAttribute },
+  );
 
-  @Input({ transform: numberAttribute })
-  public minLength: number | string | undefined;
+  public readonly minLength = input<number | string | undefined, unknown>(
+    undefined,
+    { transform: numberAttribute },
+  );
 
-  @Input() public name: string | undefined;
+  public readonly name = input<string | undefined>(undefined);
 
-  @Input({ transform: numberAttribute })
-  public step: number | string | undefined;
+  public readonly step = input<number | string | undefined, unknown>(
+    undefined,
+    { transform: numberAttribute },
+  );
 
-  @Input() public type: InputType = 'text';
+  public readonly type = input<InputType>('text');
 }

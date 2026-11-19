@@ -1,10 +1,11 @@
-<mat-label>{{ label }}</mat-label>
+<mat-label>{{ label() }}</mat-label>
 <mat-chip-listbox
-  [compareWith]="compareWith"
+  [attr.aria-label]="label()"
+  [compareWith]="compareWith()"
   [formControl]="formControl"
-  [multiple]="multiple"
+  [multiple]="multiple()"
 >
-  @for (chip of chips; track chip) {
+  @for (chip of chips(); track chip) {
     <mat-chip-option [disabled]="chip.disabled" [value]="chip.value">{{
       chip.element.textContent
     }}</mat-chip-option>
@@ -13,12 +14,12 @@
 @if (formControl.invalid && formControl.touched) {
   <mat-error>
     @if (formControl.hasError('required')) {
-      {{ label }} is required.
+      {{ label() }} is required.
     } @else if (formControl.hasError('maxlength')) {
-      {{ label }} cannot exceed
+      {{ label() }} cannot exceed
       {{ formControl.errors?.['maxlength'].requiredLength }} selections.
     } @else if (formControl.hasError('minlength')) {
-      {{ label }} must have at least
+      {{ label() }} must have at least
       {{ formControl.errors?.['minlength'].requiredLength }} selections.
     }
   </mat-error>

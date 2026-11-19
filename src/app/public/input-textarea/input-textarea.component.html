@@ -1,29 +1,29 @@
-<mat-form-field [appearance]="appearance">
-  <mat-label>{{ label }}</mat-label>
+<mat-form-field [appearance]="appearance()">
+  <mat-label>{{ label() }}</mat-label>
   @if (formControl) {
     <textarea
-      [autocomplete]="autocomplete"
+      [autocomplete]="autocomplete()"
       [formControl]="formControl"
-      [id]="id"
-      [name]="name || id"
-      [placeholder]="placeholder || ''"
+      [id]="id()"
+      [name]="name() || id()"
+      [placeholder]="placeholder() || ''"
       matInput
     ></textarea>
   } @else {
-    Loading{{ label ? ' ' + label : '' }}...
+    Loading{{ label() ? ' ' + label() : '' }}...
   }
-  @if (!hideHint) {
-    <mat-hint [title]="hint">{{ hint }}</mat-hint>
+  @if (!hideHint()) {
+    <mat-hint [title]="hint()">{{ hint() }}</mat-hint>
   }
   @if (formControl.invalid && formControl.touched) {
     <mat-error>
       @if (formControl.hasError('required')) {
-        {{ label }} is required.
+        {{ label() }} is required.
       } @else if (formControl.hasError('minlength')) {
-        {{ label }} must be at least
+        {{ label() }} must be at least
         {{ formControl.errors?.['minlength'].requiredLength }} characters.
       } @else if (formControl.hasError('maxlength')) {
-        {{ label }} cannot exceed
+        {{ label() }} cannot exceed
         {{ formControl.errors?.['maxlength'].requiredLength }} characters.
       }
     </mat-error>

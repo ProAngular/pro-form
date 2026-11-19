@@ -1,33 +1,39 @@
 @if (formControl) {
-  <mat-form-field [appearance]="appearance">
-    <mat-label>{{ label }}</mat-label>
+  <mat-form-field [appearance]="appearance()">
+    <mat-label>{{ label() }}</mat-label>
     <input
       [formControl]="formControl"
       [matTimepicker]="timepicker"
-      [max]="max"
-      [min]="min"
-      [placeholder]="placeholder ?? ''"
+      [max]="max()"
+      [min]="min()"
+      [placeholder]="placeholder() ?? ''"
       matInput
     />
     <mat-timepicker-toggle [for]="timepicker" matSuffix />
-    <mat-timepicker #timepicker [interval]="interval" />
-    @if (!hideHint) {
-      <mat-hint [title]="hint">{{ hint }}</mat-hint>
+    <mat-timepicker #timepicker [interval]="interval()" />
+    @if (!hideHint()) {
+      <mat-hint [title]="hint()">{{ hint() }}</mat-hint>
     }
     @if (formControl.invalid && formControl.touched) {
       <mat-error>
         @if (formControl.hasError('required')) {
-          {{ label }} is required.
+          {{ label() }} is required.
         } @else if (formControl.hasError('min')) {
-          {{ label }} must be at least
-          {{ formControl.errors?.['min'].min | dateTime: 'h:mm a (ZZZZ)' }}.
+          {{ label() }} must be at least
+          {{
+            $safeNavigationMigration(formControl.errors?.['min'].min)
+              | dateTime: 'h:mm a (ZZZZ)'
+          }}.
         } @else if (formControl.hasError('max')) {
-          {{ label }} cannot exceed
-          {{ formControl.errors?.['max'].max | dateTime: 'h:mm a (ZZZZ)' }}.
+          {{ label() }} cannot exceed
+          {{
+            $safeNavigationMigration(formControl.errors?.['max'].max)
+              | dateTime: 'h:mm a (ZZZZ)'
+          }}.
         }
       </mat-error>
     }
   </mat-form-field>
 } @else {
-  <pro-input-loading [label]="label" />
+  <pro-input-loading [label]="label()" />
 }

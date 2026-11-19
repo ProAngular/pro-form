@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -52,9 +52,7 @@ import {
     MatIconModule,
     ReactiveFormsModule,
   ],
-  standalone: true,
   styleUrl: './form.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent extends FormDirective<FormGroupExample> {
   public constructor() {

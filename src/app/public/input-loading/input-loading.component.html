@@ -1,6 +1,8 @@
-<mat-form-field [appearance]="appearance">
+<mat-form-field [appearance]="appearance()">
   <input [formControl]="formControl" matInput type="text" />
-  @if (!hideHint && hint) {
-    <mat-hint [title]="hint">{{ hint }}</mat-hint>
+  @if (!hideHint()) {
+    @if (hint(); as hintText) {
+      <mat-hint [title]="hintText">{{ hintText }}</mat-hint>
+    }
   }
 </mat-form-field>

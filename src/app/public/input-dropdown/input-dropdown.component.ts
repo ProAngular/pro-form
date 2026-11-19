@@ -1,12 +1,10 @@
 import {
-  ChangeDetectionStrategy,
   Component,
-  ContentChildren,
-  Input,
-  QueryList,
-  ViewChild,
   booleanAttribute,
+  contentChildren,
+  input,
   numberAttribute,
+  viewChild,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,52 +31,59 @@ import { InputDropdownOptionComponent } from './input-dropdown-option.component'
     ReactiveFormsModule,
   ],
   styleUrl: './input-dropdown.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class InputDropdownComponent<T> extends InputDirective<T> {
-  @Input() public appearance: InputAppearance = 'outline';
+  public readonly appearance = input<InputAppearance>('outline');
 
-  @Input({ transform: numberAttribute })
-  public max: number | string | undefined;
+  public readonly max = input<number | undefined, unknown>(undefined, {
+    transform: numberAttribute,
+  });
 
-  @Input({ transform: booleanAttribute })
-  public multiple = false;
+  public readonly multiple = input(false, { transform: booleanAttribute });
 
-  @ContentChildren(InputDropdownOptionComponent)
-  public readonly options: QueryList<InputDropdownOptionComponent> =
-    new QueryList<InputDropdownOptionComponent>();
+  public readonly options = contentChildren(InputDropdownOptionComponent);
 
-  @ContentChildren(InputDropdownOptionGroupComponent)
-  public readonly optionGroups: QueryList<InputDropdownOptionGroupComponent> =
-    new QueryList<InputDropdownOptionGroupComponent>();
+  public readonly optionGroups = contentChildren(
+    InputDropdownOptionGroupComponent,
+  );
 
-  @ViewChild(MatSelect) public readonly matSelect?: MatSelect;
+  public readonly matSelect = viewChild(MatSelect);
+
+  public readonly compareWith = input<MatSelect['compareWith']>(
+    (optionValue, selectedValue) => {
+      return (
+        JSON.stringify(optionValue) === JSON.stringify(selectedValue) ||
+        optionValue === selectedValue
+      );
+    },
+  );
 
   protected get selectedOptions(): readonly InputDropdownOptionComponent[] {
-    if (!this.matSelect) {
+    const matSelect = this.matSelect();
+    if (!matSelect) {
       return [];
     }
 
     const allOptions = [
-      ...this.options.toArray(),
-      ...this.optionGroups
-        .toArray()
-        .flatMap((group) => group.options.toArray()),
+      ...this.options(),
+      ...this.optionGroups().reduce<InputDropdownOptionComponent[]>(
+        (groupOptions, group) => [...groupOptions, ...group.options()],
+        [],
+      ),
     ];
 
     // Single selection
-    if (this.matSelect.selected instanceof MatOption) {
-      const selectedValue = this.matSelect.selected.value;
+    if (matSelect.selected instanceof MatOption) {
+      const selectedValue = matSelect.selected.value;
       return allOptions.filter((option) => option.value === selectedValue);
     }
 
     // Multi-selection
     if (
-      Array.isArray(this.matSelect.selected) &&
-      this.matSelect.selected.every((s) => s instanceof MatOption)
+      Array.isArray(matSelect.selected) &&
+      matSelect.selected.every((s) => s instanceof MatOption)
     ) {
-      const selectedValues = this.matSelect.selected.map(
+      const selectedValues = matSelect.selected.map(
         (selected) => (selected as MatOption).value,
       );
       return allOptions.filter((option) =>
@@ -89,14 +94,4 @@ export class InputDropdownComponent<T> extends InputDirective<T> {
     // Default: No option is selected.
     return [];
   }
-
-  @Input() public compareWith: MatSelect['compareWith'] = (
-    optionValue,
-    selectedValue,
-  ) => {
-    return (
-      JSON.stringify(optionValue) === JSON.stringify(selectedValue) ||
-      optionValue === selectedValue
-    );
-  };
 }

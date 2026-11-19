@@ -1,20 +1,13 @@
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { startWith } from 'rxjs';
 
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, output } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { InputDirective } from '../input.directive';
 
-@UntilDestroy()
 @Component({
   selector: 'pro-input-toggle[label]',
   templateUrl: './input-toggle.component.html',
@@ -25,19 +18,22 @@ import { InputDirective } from '../input.directive';
     ReactiveFormsModule,
   ],
   styleUrl: './input-toggle.component.scss',
-  changeDetection: ChangeDetectionStrategy.Default,
-  standalone: true,
 })
 export class InputToggleComponent
   extends InputDirective<boolean | null>
   implements OnInit
 {
+  private readonly destroyRef = inject(DestroyRef);
+
   // eslint-disable-next-line @angular-eslint/no-output-native
-  @Output() public readonly change = new EventEmitter<boolean>();
+  public readonly change = output<boolean>();
 
   public ngOnInit(): void {
     this.formControl.valueChanges
-      .pipe(startWith(this.formControl.value), untilDestroyed(this))
+      .pipe(
+        startWith(this.formControl.value),
+        takeUntilDestroyed(this.destroyRef),
+      )
       .subscribe((isChecked) => {
         if (this.formControl.disabled) {
           return;

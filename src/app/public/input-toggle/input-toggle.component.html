@@ -1,12 +1,12 @@
 <mat-slide-toggle [formControl]="formControl"
   ><span class="label">{{
-    label + (isRequired ? '*' : '')
+    label() + (isRequired ? '*' : '')
   }}</span></mat-slide-toggle
 >
 @if (formControl.invalid && formControl.touched) {
   <mat-error>
     @if (formControl.hasError('required')) {
-      {{ label }} is required.
+      {{ label() }} is required.
     }
   </mat-error>
 }

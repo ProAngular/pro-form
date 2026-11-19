@@ -270,11 +270,22 @@ application where used:
 
 | Angular version | @proangular/pro-form | Install                         |
 | --------------- | -------------------- | ------------------------------- |
+| v22             | v22.x.x              | ng add @proangular/pro-form@^22 |
 | v21             | v21.x.x              | ng add @proangular/pro-form@^21 |
 | v20             | v20.x.x              | ng add @proangular/pro-form@^20 |
 | v19             | v19.x.x              | ng add @proangular/pro-form@^19 |
 | v18             | ------               | Untested                        |
 | v17             | ------               | Untested                        |
+
+v22 moves pro-form to Angular 22. The inputs are signal inputs now and the
+components work without zone.js, so they run fine in a zoneless app. Selectors,
+input names and output names are the same, so your templates don't change. If
+you read the inputs or the content and view queries (`label`, `options`, `chips`
+and so on) from code, they're functions now, so call them. The peer ranges are
+`>=22 <23` for Angular and Material, and the package doesn't need `zone.js` or
+`@ngneat/until-destroy` anymore. The chips input now sets an `aria-label` on the
+listbox from its label. Tests run on Vitest instead of Karma, and Node 24 is
+required to build the library.
 
 <p align="right">[ <a href="#index">🔍 Index</a> ]</p>
 

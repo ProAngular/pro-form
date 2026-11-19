@@ -1,7 +1,6 @@
 import { DateTime } from 'luxon';
 
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,7 +16,6 @@ import { InputAppearance } from '../types';
   selector: 'pro-input-timepicker[label]',
   templateUrl: './input-timepicker.component.html',
   imports: [
-    CommonModule,
     DateTimePipe,
     InputLoadingComponent,
     MatFormFieldModule,
@@ -27,15 +25,13 @@ import { InputAppearance } from '../types';
   ],
   providers: [provideLuxonDateAdapter()],
   styleUrl: './input-timepicker.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class InputTimepickerComponent extends InputDirective<DateTime> {
-  @Input() public appearance: InputAppearance = 'outline';
+  public readonly appearance = input<InputAppearance>('outline');
 
-  @Input() public interval: string | number | null = null;
+  public readonly interval = input<string | number | null>(null);
 
-  @Input() public max: DateTime | undefined;
+  public readonly max = input<DateTime | undefined>();
 
-  @Input() public min: DateTime | undefined;
+  public readonly min = input<DateTime | undefined>();
 }
