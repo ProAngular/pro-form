@@ -1,5 +1,6 @@
 <mat-label>{{ label() }}</mat-label>
 <mat-chip-listbox
+  [attr.aria-label]="label()"
   [compareWith]="compareWith()"
   [formControl]="formControl"
   [multiple]="multiple()"
