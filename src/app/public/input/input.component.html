@@ -1,43 +1,43 @@
 @if (formControl) {
-  <mat-form-field [appearance]="appearance">
-    <mat-label>{{ label }}</mat-label>
+  <mat-form-field [appearance]="appearance()">
+    <mat-label>{{ label() }}</mat-label>
     <input
-      [attr.step]="step"
-      [autocomplete]="autocomplete"
+      [attr.step]="step()"
+      [autocomplete]="autocomplete()"
       [formControl]="formControl"
-      [id]="id"
-      [name]="name || id"
-      [placeholder]="placeholder || ''"
-      [type]="type"
+      [id]="id()"
+      [name]="name() || id()"
+      [placeholder]="placeholder() || ''"
+      [type]="type()"
       matInput
     />
-    @if (!hideHint) {
-      <mat-hint [title]="hint">{{ hint }}</mat-hint>
+    @if (!hideHint()) {
+      <mat-hint [title]="hint()">{{ hint() }}</mat-hint>
     }
     @if (formControl.invalid && formControl.touched) {
       <mat-error>
         @if (formControl.hasError('required')) {
-          {{ label }} is required.
+          {{ label() }} is required.
         } @else if (formControl.hasError('min')) {
-          {{ label }} must be at least {{ formControl.errors?.['min'].min }}.
+          {{ label() }} must be at least {{ formControl.errors?.['min'].min }}.
         } @else if (formControl.hasError('max')) {
-          {{ label }} cannot exceed {{ formControl.errors?.['max'].max }}.
+          {{ label() }} cannot exceed {{ formControl.errors?.['max'].max }}.
         } @else if (formControl.hasError('minlength')) {
-          {{ label }} must be at least
+          {{ label() }} must be at least
           {{ formControl.errors?.['minlength'].requiredLength }} characters.
         } @else if (formControl.hasError('maxlength')) {
-          {{ label }} cannot exceed
+          {{ label() }} cannot exceed
           {{ formControl.errors?.['maxlength'].requiredLength }} characters.
         } @else if (formControl.hasError('email')) {
-          {{ label }} must be a valid email address.
+          {{ label() }} must be a valid email address.
         } @else if (formControl.hasError('nonNumber')) {
-          {{ label }} must be a number.
+          {{ label() }} must be a number.
         } @else if (formControl.hasError('wholeNumber')) {
-          {{ label }} must be a whole number.
+          {{ label() }} must be a whole number.
         }
       </mat-error>
     }
   </mat-form-field>
 } @else {
-  <pro-input-loading [label]="label" />
+  <pro-input-loading [label]="label()" />
 }

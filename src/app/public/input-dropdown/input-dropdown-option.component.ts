@@ -1,17 +1,10 @@
 import { coerceElement } from '@angular/cdk/coercion';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  inject,
-} from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { MatOption } from '@angular/material/core';
 
 @Component({
   selector: 'pro-input-dropdown-option',
   template: `<ng-content></ng-content>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class InputDropdownOptionComponent extends MatOption {
   private readonly elementRef = inject(ElementRef<HTMLElement>);

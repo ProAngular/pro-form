@@ -1,12 +1,10 @@
 import {
-  ChangeDetectionStrategy,
   Component,
-  ContentChildren,
-  Input,
-  QueryList,
-  ViewChild,
   booleanAttribute,
+  contentChildren,
+  input,
   numberAttribute,
+  viewChild,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipListbox, MatChipsModule } from '@angular/material/chips';
@@ -25,29 +23,24 @@ import { InputChipComponent } from './input-chip.component';
     ReactiveFormsModule,
   ],
   styleUrl: './input-chips.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class InputChipsComponent extends InputDirective<string> {
-  @ContentChildren(InputChipComponent)
-  public readonly chips = new QueryList<InputChipComponent>();
+  public readonly chips = contentChildren(InputChipComponent);
 
-  @ViewChild(MatChipListbox)
-  public readonly matChipListbox: MatChipListbox | undefined;
+  public readonly matChipListbox = viewChild(MatChipListbox);
 
-  @Input({ transform: numberAttribute })
-  public max: number | string | undefined;
+  public readonly max = input<number | undefined, unknown>(undefined, {
+    transform: numberAttribute,
+  });
 
-  @Input({ transform: booleanAttribute })
-  public multiple = false;
+  public readonly multiple = input(false, { transform: booleanAttribute });
 
-  @Input() public compareWith: MatChipListbox['compareWith'] = (
-    optionValue,
-    selectedValue,
-  ) => {
-    return (
-      JSON.stringify(optionValue) === JSON.stringify(selectedValue) ||
-      optionValue === selectedValue
-    );
-  };
+  public readonly compareWith = input<MatChipListbox['compareWith']>(
+    (optionValue, selectedValue) => {
+      return (
+        JSON.stringify(optionValue) === JSON.stringify(selectedValue) ||
+        optionValue === selectedValue
+      );
+    },
+  );
 }
